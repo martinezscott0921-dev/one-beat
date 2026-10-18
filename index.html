@@ -1,1699 +1,957 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>柔 · AI 产品经理</title>
-  <meta name="description" content="柔 · AI 产品经理。用产品思维把 AI 变成大家爱不释手的好东西。" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet" />
-  <!-- 中文像素字体：缝合像素（Fusion Pixel）简体中文 12px 比例版 -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@vp-tw/cjk-web-fonts-fusion-pixel-font@0.0.1/dist/12px/proportional/zh_hans/Fusion-Pixel-12px-Proportional-Simplified-Chinese.css" />
-  <style>
-    :root {
-      --bg: #0a0e21;
-      --bg-2: #10173a;
-      --blue: #4f8cff;
-      --blue-deep: #1f4fd8;
-      --blue-dark: #10255e;
-      --red: #ff5a4e;
-      --red-deep: #d63a2e;
-      --gold: #ffcf3f;
-      --gold-deep: #c88700;
-      --green: #37d16b;
-      --green-deep: #1e9c47;
-      --skin: #ffd9a0;
-      --ink: #eaf0ff;
-      --ink-dim: #aab6d8;
-      --ink-faint: #7c88ad;
-      --card: #131a38;
-      --card-line: #28345f;
-      --font-pixel: "Fusion Pixel 12px Proportional Simplified Chinese", "Press Start 2P", monospace;
-      --font-px-en: "Press Start 2P", monospace;
-      --font-cute: "ZCOOL KuaiLe", "PingFang SC", "Microsoft YaHei", sans-serif;
-      --font-body: "PingFang SC", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, sans-serif;
-      --maxw: 1120px;
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="平柔 · AI 产品经理。Discover. Define. Deliver.">
+<title>平柔 · Discover Define Deliver</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500;62..125,800;62..125,900&family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+html,body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+/* Layout: 悬浮白色页眉 → 左侧超粗标语 + 右侧三列无限滚动拼贴（简历项目的界面 + 色块关键词）→ 能力 / 项目 / 文章 / 联系。单一浅色设计。 */
+:root{
+  color-scheme:light;
+  --paper:#f5f4ef;
+  --ink:#0f0f0e;
+  --muted:#62615d;
+  --line:rgba(15,15,14,.10);
+  --rule:rgba(15,15,14,.18);
+  --card-dark:#151515;
+  --card-cream:#f9f6f1;
+  --red:#ef5d44;
+  --yellow:#fcdd71;
+  --blue:#9fd5f7;
+  --white:#ffffff;
+  --shot:#e7e6e1;
+  --shot-2:#d6d5cf;
+  --display:"Archivo","Noto Sans SC","Arial Black",Impact,system-ui,sans-serif;
+  --cn-heavy:"Noto Sans SC","Archivo",system-ui,sans-serif;
+  --sans:"Inter","Noto Sans SC",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r:22px;
+  --col:clamp(150px,15.5vw,206px);
+  --gap:13px;
+  --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid #3b82f6;outline-offset:3px;border-radius:8px}
+.shell{max-width:1400px;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
 
-    html { scroll-behavior: smooth; }
+/* ===== HEADER ===== */
+.hdr{position:absolute;top:0;left:max(24px,env(safe-area-inset-left,0px));right:max(24px,env(safe-area-inset-right,0px));z-index:5;background:var(--white);border-radius:0 0 var(--r) var(--r);box-shadow:0 0 0 1px var(--line),0 16px 36px -24px rgba(15,15,14,.3);max-width:1352px;margin:0 auto}
+.util{height:38px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding-inline:28px;font-size:13px;color:var(--muted);font-weight:500}
+.util .status{display:flex;align-items:center;gap:8px}
+.util .status i{width:8px;height:8px;border-radius:50%;background:#3cb371;box-shadow:0 0 0 3px rgba(60,179,113,.18)}
+.util .loc{display:flex;gap:22px}
+.main-row{display:flex;align-items:center;gap:28px;padding:16px 16px 16px 28px}
+.logo{display:flex;flex-direction:column;line-height:1}
+.logo b{font-family:var(--display);font-weight:900;font-stretch:85%;font-size:30px;letter-spacing:-.02em}
+.logo small{font-size:8.6px;font-weight:700;letter-spacing:.06em;color:var(--muted);margin-top:4px}
+.nav{display:flex;align-items:center;gap:30px;font-size:17px;font-weight:500;margin-left:24px}
+.nav a:hover{opacity:.6}
+.nav .sep{width:1px;height:26px;background:var(--rule)}
+.circ{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--white)}
+.circ svg{width:13px;height:13px}
+.nav-first{display:flex;align-items:center;gap:12px}
+.cta{margin-left:auto;display:flex;align-items:center;gap:2px}
+.pill{display:inline-flex;align-items:center;justify-content:center;height:58px;padding:0 26px;border-radius:var(--r);background:var(--ink);color:var(--white);font-weight:700;font-size:17px;border:0}
+.round{display:inline-grid;place-items:center;width:60px;height:60px;border-radius:50%;background:var(--ink);color:var(--white);border:0}
+.round svg{width:20px;height:20px;transform:rotate(-45deg)}
+.cta:hover .round svg{transform:rotate(0deg);transition:transform .3s}
 
-    body {
-      font-family: var(--font-body);
-      background: var(--bg);
-      color: var(--ink);
-      line-height: 1.7;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
+/* ===== HERO ===== */
+.hero{position:relative;min-height:800px;overflow:hidden}
+.hero-copy{position:relative;z-index:3;padding-top:220px;padding-bottom:80px;max-width:560px}
+h1{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(56px,6.6vw,92px);line-height:.92;letter-spacing:-.055em;margin:0;-webkit-text-stroke:1px var(--ink)}
+h1 .ln{display:block;overflow:hidden;padding-bottom:.04em}
+h1 .ln span{display:block;animation:rise 1s cubic-bezier(.16,1,.3,1) both}
+h1 .ln:nth-child(2) span{animation-delay:.085s}
+h1 .ln:nth-child(3) span{animation-delay:.17s}
+h1 .dot{color:var(--red);-webkit-text-stroke:0}
+@keyframes rise{from{transform:translateY(105%)}to{transform:none}}
+.intro{margin:36px 0 0;font-size:18px;line-height:1.75;max-width:30em;color:#2b2a27}
+.intro strong{font-weight:700;color:var(--ink)}
+.acts{display:flex;align-items:center;gap:28px;margin-top:40px;flex-wrap:wrap}
+.acts .group{display:flex;gap:2px}
+.link-arrow{display:inline-flex;align-items:center;gap:14px;font-weight:700;font-size:18px}
+.link-arrow .circ{width:34px;height:34px}
+.link-arrow .circ svg{width:15px;height:15px}
+.fade-up{animation:fadeup .9s cubic-bezier(.25,1,.5,1) both}
+.d1{animation-delay:.35s}.d2{animation-delay:.48s}
+@keyframes fadeup{from{transform:translateY(14px);opacity:.001}to{transform:none;opacity:1}}
 
-    ::selection { background: var(--blue); color: #fff; }
-    a { color: inherit; text-decoration: none; }
+/* ===== MOSAIC ===== */
+.grid{position:absolute;top:0;bottom:0;right:max(24px,calc((100% - 1352px)/2 + 40px));width:calc(3*var(--col) + 2*var(--gap));z-index:1}
+.col{position:absolute;top:0;width:var(--col);display:flex;flex-direction:column;gap:var(--gap);animation:colDown 48s linear infinite;will-change:transform}
+.col.up{animation-name:colUp}
+.c1{left:0;margin-top:86px}
+.c2{left:calc(var(--col) + var(--gap));margin-top:-12px}
+.c3{left:calc(2*(var(--col) + var(--gap)));margin-top:60px}
+@keyframes colDown{from{transform:translate3d(0,0,0)}to{transform:translate3d(0,calc(-50% - var(--gap)/2),0)}}
+@keyframes colUp{from{transform:translate3d(0,calc(-50% - var(--gap)/2),0)}to{transform:translate3d(0,0,0)}}
+.grid:hover .col{animation-play-state:paused}
+.cell{position:relative;width:100%;aspect-ratio:205/270;border-radius:var(--r);overflow:hidden;container-type:inline-size;flex:none}
+.cell.solid::after{content:"";position:absolute;inset:0;background-image:var(--grain);opacity:.10;mix-blend-mode:multiply;pointer-events:none}
+.red{background:var(--red)}.yellow{background:var(--yellow)}.blue{background:var(--blue)}
+.cream{background:var(--card-cream);box-shadow:inset 0 0 0 1px #e9e6df}
+.dark{background:var(--card-dark);color:var(--white);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.dark.solid::after{mix-blend-mode:screen;opacity:.05}
+.kw{display:flex;flex-direction:column;justify-content:space-between;padding:9cqw}
+.kw .en{font-family:var(--display);font-weight:800;font-size:7cqw;letter-spacing:.06em;text-transform:uppercase;opacity:.75}
+.kw .cn{font-family:var(--cn-heavy);font-weight:900;font-size:17cqw;line-height:1.05;letter-spacing:-.02em}
+.kw .cn.lat{font-family:var(--display);font-size:22cqw;letter-spacing:-.05em}
+.tag-x{position:absolute;right:6cqw;bottom:6cqw;font-size:5.4cqw;font-weight:600;padding:1.4cqw 3.4cqw;border-radius:999px;background:rgba(255,255,255,.82);color:#3d3c39;z-index:2;letter-spacing:.02em}
 
-    .container {
-      width: 100%;
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 0 28px;
-      position: relative;
-      z-index: 2;
-    }
+/* mock screenshots — 全部为虚构示意 */
+.mock{position:absolute;inset:0;background:var(--shot);font-size:5.2cqw;line-height:1.35;color:#2a2a28;padding:6cqw;display:flex;flex-direction:column;gap:3.6cqw}
+.mock .bar{display:flex;align-items:center;gap:1.6cqw;font-weight:600;font-size:5cqw;color:#55544f;padding-bottom:3cqw;border-bottom:1px solid var(--shot-2)}
+.mock .bar i{width:2.6cqw;height:2.6cqw;border-radius:50%;background:#bdbcb6}
+.mock .bar span{margin-left:1.6cqw}
+.msg{padding:3cqw 4cqw;border-radius:4cqw;max-width:88%}
+.msg.u{align-self:flex-end;background:var(--ink);color:var(--white);border-bottom-right-radius:1cqw}
+.msg.a{background:var(--white);border-bottom-left-radius:1cqw}
+.msg ol{margin:1.6cqw 0 0;padding-left:5cqw}
+.msg ol li::marker{color:var(--red);font-weight:700}
+.msg .ok{color:#2e8b57;font-weight:700}
+.inp{margin-top:auto;background:var(--white);border-radius:3cqw;padding:3cqw 4cqw;color:#9a9993;display:flex;justify-content:space-between}
+.inp b{width:7cqw;height:7cqw;border-radius:50%;background:var(--ink)}
+.m-doc{background:var(--white)}
+.doc-h{font-weight:800;font-size:7cqw;line-height:1.2;letter-spacing:-.01em}
+.doc-v{font-size:4.6cqw;color:var(--muted);display:flex;gap:2cqw;align-items:center}
+.doc-v em{font-style:normal;background:var(--yellow);padding:.6cqw 2cqw;border-radius:2cqw;color:var(--ink);font-weight:600}
+.m-doc h5{margin:1.4cqw 0 0;font-size:5.4cqw}
+.lns{display:flex;flex-direction:column;gap:2cqw}
+.lns i{height:2.2cqw;border-radius:2cqw;background:#e6e5e0}
+.tbl{width:100%;border-collapse:collapse;font-size:4.6cqw}
+.tbl td{border-top:1px solid #e3e2dd;padding:1.8cqw 0}
+.tbl td:last-child{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.m-prompt{background:var(--card-dark);color:#d8d6cf;font-family:var(--mono);font-size:5cqw;line-height:1.55}
+.m-prompt .bar{color:#9b998f;border-color:#2c2c2a;font-family:var(--sans)}
+.m-prompt .bar i{background:#3a3a37}
+.m-prompt .c{color:#7d7b74}
+.m-prompt .k{color:var(--yellow)}
+.m-prompt .s{color:var(--blue)}
+.m-prompt pre{margin:0;font:inherit;white-space:pre-wrap}
+.m-dash{background:var(--white)}
+.kpi{font-family:var(--display);font-weight:900;font-size:17cqw;letter-spacing:-.05em;line-height:1}
+.kpi small{font-family:var(--sans);font-size:5cqw;font-weight:700;color:#2e8b57;letter-spacing:0;margin-left:2cqw}
+.m-dash .lab{font-size:4.6cqw;color:var(--muted)}
+.m-dash svg,.m-flow svg{width:100%;height:auto;display:block;margin-top:auto}
+.m-flow{background:var(--card-cream)}
+.m-kanban{background:var(--shot)}
+.kb{display:grid;grid-template-columns:repeat(3,1fr);gap:2.4cqw;flex:1;min-height:0}
+.kb div{display:flex;flex-direction:column;gap:2cqw;min-width:0}
+.kb h6{margin:0;font-size:4.4cqw;color:#55544f;white-space:nowrap}
+.kb p{margin:0;background:var(--white);border-radius:2.4cqw;padding:2.2cqw;font-size:4.2cqw;line-height:1.3}
+.kb p.hot{box-shadow:inset 1cqw 0 0 var(--red)}
+.kb p.done{opacity:.55;text-decoration:line-through}
 
-    /* ============ 背景层：夜空 + 模糊照片 + 星星贴纸 ============ */
-    .bg-sky {
-      position: fixed;
-      inset: 0;
-      z-index: -3;
-      background:
-        radial-gradient(120% 90% at 50% -10%, #1b2a63 0%, transparent 55%),
-        radial-gradient(90% 70% at 85% 110%, #13204a 0%, transparent 60%),
-        linear-gradient(180deg, #0c1230 0%, #0a0e21 55%, #070a18 100%);
-    }
-    /* 模糊照片：像素夜景剪影（远山 + 云 + 月亮 + 光斑），整体柔焦 */
-    .bg-photo {
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      filter: blur(7px);
-      opacity: .6;
-      pointer-events: none;
-    }
-    .bp-moon {
-      position: absolute;
-      top: 9%; right: 12%;
-      width: 88px; height: 88px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #fff8e0, #ffd98a 60%, #f2b94d);
-      box-shadow: 0 0 60px rgba(255, 224, 150, .55);
-    }
-    .bp-hill { position: absolute; border-radius: 50%; }
-    .bp-hill.h1 { left: -12%; bottom: -22%; width: 70%; height: 46%; background: #141c40; }
-    .bp-hill.h2 { right: -14%; bottom: -24%; width: 64%; height: 44%; background: #101734; }
-    .bp-hill.h3 { left: 18%; bottom: -16%; width: 46%; height: 30%; background: #0d1329; }
-    .bp-glow {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(30px);
-      opacity: .5;
-    }
-    .bp-glow.g1 { top: 24%; left: 10%; width: 220px; height: 220px; background: #3d6dff; }
-    .bp-glow.g2 { bottom: 8%; right: 20%; width: 260px; height: 260px; background: #ff7a4e; }
-    .bp-cloud {
-      position: absolute;
-      width: 14px; height: 14px;
-      background: rgba(255, 255, 255, .85);
-      box-shadow:
-        14px 0 0 rgba(255,255,255,.85), 28px 0 0 rgba(255,255,255,.85), 42px 0 0 rgba(255,255,255,.85),
-        0 14px 0 rgba(255,255,255,.85), 14px 14px 0 rgba(255,255,255,.85), 28px 14px 0 rgba(255,255,255,.85), 42px 14px 0 rgba(255,255,255,.85), 56px 14px 0 rgba(255,255,255,.85),
-        14px 28px 0 rgba(255,255,255,.85), 28px 28px 0 rgba(255,255,255,.85), 42px 28px 0 rgba(255,255,255,.85);
-    }
-    .bp-cloud.c1 { top: 20%; left: 6%; opacity: .5; }
-    .bp-cloud.c2 { top: 34%; left: 40%; opacity: .35; transform: scale(.8); }
+.src{font-size:4.4cqw;color:#62615d;padding-left:3cqw;border-left:1.2cqw solid var(--blue)}
+.ev{display:grid;gap:2cqw;font-size:4.4cqw}
+.ev-h,.ev-r{display:grid;grid-template-columns:1.9fr repeat(4,1fr);align-items:center;gap:1.4cqw}
+.ev-h{color:#62615d;font-size:3.8cqw}
+.ev-h span:not(:first-child){text-align:center}
+.ev-r{background:var(--white);border-radius:2.4cqw;padding:2.2cqw}
+.ev-r i{justify-self:center;width:4.4cqw;height:4.4cqw;border-radius:50%}
+.ev-r i.y{background:var(--ink)}
+.ev-r i.n{background:var(--red)}
+.ev-f{margin-top:auto;font-size:4.2cqw;color:#62615d}
 
-    /* 星星贴纸（清晰，闪烁） */
-    .stars { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
-    .star {
-      position: absolute;
-      color: #fff;
-      line-height: 1;
-      filter: drop-shadow(0 0 6px rgba(255,255,255,.8));
-      animation: twinkle var(--d, 3s) ease-in-out infinite;
-      opacity: 0;
-    }
-    @keyframes twinkle {
-      0%, 100% { opacity: 0; transform: scale(.4) rotate(0deg); }
-      50% { opacity: 1; transform: scale(1) rotate(20deg); }
-    }
+/* ===== SECTIONS ===== */
+.sec{padding-block:110px 20px}
+.sec-head{display:grid;grid-template-columns:1fr auto;align-items:end;gap:20px;border-bottom:2px solid var(--ink);padding-bottom:16px;margin-bottom:40px}
+.sec-head h2{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(40px,5vw,68px);line-height:.92;letter-spacing:-.05em;margin:0}
+.sec-head h2 span{display:block;font-family:var(--cn-heavy);font-size:.34em;letter-spacing:0;margin-top:12px;font-weight:700;color:var(--muted)}
+.sec-head p{margin:0;max-width:24em;color:var(--muted);font-size:15px}
+.todo{display:inline-block;font-size:12px;line-height:1;padding:6px 10px;border-radius:999px;border:1px dashed var(--red);color:var(--red);font-weight:600;white-space:nowrap}
 
-    /* ============ 顶部导航 ============ */
-    .nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 18px 0;
-      transition: background .3s ease, padding .3s ease, box-shadow .3s ease;
-    }
-    .nav.scrolled {
-      background: rgba(10, 14, 33, .82);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      box-shadow: 0 1px 0 var(--card-line);
-      padding: 12px 0;
-    }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
-    .logo {
-      font-family: var(--font-pixel);
-      font-size: 18px;
-      color: #fff;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .logo .logo-coin {
-      width: 14px; height: 14px;
-      border-radius: 50%;
-      background: var(--gold);
-      border: 2px solid var(--gold-deep);
-      display: inline-block;
-    }
-    .logo span { color: var(--blue); }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-family: var(--font-pixel);
-      font-size: 13px;
-      color: var(--ink-dim);
-      letter-spacing: 1px;
-      transition: color .2s ease;
-    }
-    .nav-links a:hover { color: var(--gold); }
-    .burger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 6px;
-    }
-    .burger span {
-      display: block;
-      width: 24px; height: 3px;
-      background: #fff;
-      transition: transform .3s ease, opacity .3s ease;
-    }
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+.skill{border-radius:var(--r);padding:30px;display:flex;flex-direction:column;gap:18px;min-height:380px;position:relative;overflow:hidden;min-width:0}
+.skill::after{content:"";position:absolute;inset:0;background-image:var(--grain);opacity:.10;mix-blend-mode:multiply;pointer-events:none}
+.skill .no{font-family:var(--display);font-weight:800;font-size:15px;letter-spacing:.06em}
+.skill h3{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:44px;letter-spacing:-.05em;line-height:1;margin:0}
+.skill h3 small{display:block;font-family:var(--cn-heavy);font-size:17px;letter-spacing:0;margin-top:10px;font-weight:700}
+.skill ul{margin:auto 0 0;padding:0;list-style:none;display:grid;gap:10px;font-size:15px;font-weight:500}
+.skill li{padding-top:10px;border-top:1px solid rgba(15,15,14,.22)}
 
-    /* ============ Hero ============ */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      padding: 120px 0 40px;
-      overflow: hidden;
-    }
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-family: var(--font-px-en);
-      font-size: 11px;
-      letter-spacing: 2px;
-      color: var(--gold);
-      margin-bottom: 26px;
-    }
-    .hero-eyebrow .dot {
-      width: 8px; height: 8px;
-      background: var(--red);
-      box-shadow: 0 0 12px rgba(255, 90, 78, .8);
-      border-radius: 2px;
-    }
-    .hero h1 {
-      font-family: var(--font-pixel);
-      font-size: clamp(46px, 8.5vw, 82px);
-      line-height: 1.18;
-      letter-spacing: 2px;
-      color: #fff;
-      /* 金属光泽渐变填充：顶部亮白 → 底部浅蓝 */
-      background: linear-gradient(180deg, #ffffff 0%, #f4f8ff 38%, #c9ddff 72%, #9cc0ff 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      /* 蓝色描边 */
-      -webkit-text-stroke: 3px var(--blue);
-      /* 立体厚度 + 外发光（基于文字形状，不污染填充） */
-      filter:
-        drop-shadow(0 4px 0 var(--blue-dark))
-        drop-shadow(0 8px 0 #0b1a4a)
-        drop-shadow(0 13px 0 rgba(0, 0, 0, .5))
-        drop-shadow(0 0 22px rgba(79, 140, 255, .5))
-        drop-shadow(0 0 60px rgba(79, 140, 255, .28));
-    }
-    .hero h1 .wave {
-      display: inline-block;
-      animation: hop 2.2s ease-in-out infinite;
-    }
-    @keyframes hop {
-      0%, 100% { transform: translateY(0); }
-      30% { transform: translateY(-8px); }
-      50% { transform: translateY(0); }
-    }
-    .hero-sub {
-      font-family: var(--font-cute);
-      font-size: clamp(17px, 2.4vw, 22px);
-      color: #cdd8f5;
-      margin-top: 22px;
-      max-width: 560px;
-      letter-spacing: 1px;
-    }
-    .hero-sub .spark { color: var(--gold); }
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      margin-top: 40px;
-      flex-wrap: wrap;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 15px 26px;
-      font-family: var(--font-pixel);
-      font-size: 14px;
-      letter-spacing: 1px;
-      cursor: pointer;
-      border: none;
-      position: relative;
-      transition: transform .15s ease, filter .15s ease;
-      text-shadow: 1px 1px 0 rgba(0,0,0,.4);
-    }
-    .btn:active { transform: translateY(3px); }
-    .btn::after {
-      content: "";
-      position: absolute;
-      left: 0; bottom: -5px;
-      width: 100%; height: 5px;
-      background: rgba(0,0,0,.35);
-    }
-    .btn-primary {
-      background: var(--blue);
-      color: #fff;
-      box-shadow: inset -3px -3px 0 var(--blue-deep), inset 3px 3px 0 rgba(255,255,255,.28);
-    }
-    .btn-primary:hover { filter: brightness(1.1); }
-    .btn-ghost {
-      background: var(--card);
-      color: var(--ink);
-      box-shadow: inset -3px -3px 0 #0a0f24, inset 3px 3px 0 rgba(255,255,255,.08), 0 0 0 2px var(--card-line);
-    }
-    .btn-ghost:hover { color: #fff; }
+.jobs{display:grid;gap:var(--gap)}
+.job{display:grid;grid-template-columns:260px 1fr;gap:var(--gap)}
+.when{background:var(--ink);color:var(--white);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+.when b{font-family:var(--display);font-weight:900;font-size:38px;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.when span{font-size:14px;color:#b9b7b0}
+.job-card{background:var(--white);border-radius:var(--r);padding:30px;box-shadow:0 0 0 1px var(--line);display:flex;flex-direction:column;gap:22px;min-width:0}
+.job-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-start}
+.job-top h3{margin:0;font-family:var(--cn-heavy);font-weight:900;font-size:28px;line-height:1.2}
+.job-top p{margin:4px 0 0;color:var(--muted);font-size:15px}
+.stages{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+.stage{background:var(--paper);border-radius:16px;padding:18px;font-size:14.5px;color:#3a3936;min-width:0}
+.stage b{display:block;font-family:var(--display);font-weight:900;text-transform:uppercase;letter-spacing:-.03em;font-size:20px;color:var(--ink);margin-bottom:6px}
+.when{position:relative;overflow:hidden;cursor:pointer}
+.when::after{content:"";position:absolute;inset:0;background-image:var(--grain);opacity:.10;mix-blend-mode:multiply;pointer-events:none}
+.when b{font-size:clamp(40px,4.4vw,60px);letter-spacing:-.05em}
+.when span{font-size:14px;line-height:1.6;font-weight:500}
+.red-m{background:var(--red);color:var(--ink)}
+.yellow-m{background:var(--yellow);color:var(--ink)}
+.blue-m{background:var(--blue);color:var(--ink)}
+.red-m span,.yellow-m span,.blue-m span{color:rgba(15,15,14,.78)}
+.stage ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.job-card{gap:0}
+.job-top{cursor:pointer;align-items:center}
+.fold{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.22,1,.36,1)}
+.fold>div{overflow:hidden;min-height:0}
+.fold .stages{margin-top:22px}
+.job.open .fold{grid-template-rows:1fr}
+.toggle{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 8px 0 18px;border-radius:999px;border:0;background:var(--paper);font-weight:700;font-size:14px;white-space:nowrap;transition:background .2s}
+.toggle:hover{background:#ebe9e2}
+.toggle .pm{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--white);transition:transform .35s cubic-bezier(.22,1,.36,1)}
+.toggle .pm svg{width:13px;height:13px}
+.job.open .toggle .pm{transform:rotate(45deg)}
+.peek{margin:6px 0 0;font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.stage li{padding-left:14px;position:relative;line-height:1.55}
+.stage li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--ink)}
 
-    /* 计分板 */
-    .scoreboard {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 40px;
-      font-family: var(--font-px-en);
-      font-size: 11px;
-      color: var(--ink-dim);
-      background: var(--card);
-      border: 2px solid var(--card-line);
-      padding: 10px 16px;
-      box-shadow: inset -3px -3px 0 #0a0f24;
-    }
-    .scoreboard .coin-ico {
-      width: 14px; height: 14px;
-      border-radius: 50%;
-      background: var(--gold);
-      border: 2px solid var(--gold-deep);
-      display: inline-block;
-    }
-    .scoreboard b { color: var(--gold); font-weight: 400; display: inline-block; }
-    .scoreboard .hint { font-size: 9px; color: var(--ink-faint); }
+.arts{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--gap)}
+.art{text-align:left;background:var(--white);border:0;border-radius:var(--r);padding:28px;box-shadow:0 0 0 1px var(--line);display:flex;flex-direction:column;gap:14px;min-height:300px;transition:transform .25s cubic-bezier(.25,1,.5,1),box-shadow .25s;min-width:0}
+.art:hover{transform:translateY(-4px);box-shadow:0 0 0 1px var(--line),0 22px 40px -26px rgba(15,15,14,.4)}
+.art .kind{display:inline-flex;align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+.art h3{margin:0;font-family:var(--cn-heavy);font-weight:900;font-size:23px;line-height:1.35}
+.art p{margin:0;color:var(--muted);font-size:15px}
+.art .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.art .foot .circ{width:32px;height:32px}
 
-    /* ============ 游戏场景（Hero 底部） ============ */
-    .stage {
-      margin-top: 54px;
-      position: relative;
-      height: 150px;
-      display: flex;
-      align-items: flex-end;
-      padding-bottom: 26px;
-    }
-    .ground {
-      position: absolute;
-      left: 0; right: 0; bottom: 0;
-      height: 26px;
-      background:
-        repeating-linear-gradient(90deg, #2f8f4a 0 26px, #27843f 26px 52px);
-      box-shadow: inset 0 6px 0 #1e6b34;
-    }
-    .ground::before {
-      content: "";
-      position: absolute;
-      top: -10px; left: 0; right: 0;
-      height: 10px;
-      background: #37d16b;
-    }
+.contact{margin-top:110px;background:var(--ink);color:var(--white);border-radius:calc(var(--r) + 8px);padding:clamp(32px,6vw,72px);position:relative;overflow:hidden}
+.contact::after{content:"";position:absolute;inset:0;background-image:var(--grain);opacity:.05;mix-blend-mode:screen;pointer-events:none}
+.contact .eyebrow{font-family:var(--display);font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:14px;color:#b9b7b0}
+.mail{margin-top:20px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;position:relative;z-index:1}
+.mail-addr{font-family:var(--display);font-weight:900;font-size:clamp(30px,6vw,80px);letter-spacing:-.05em;line-height:1.05;user-select:all;word-break:break-all;min-width:0}
+.copy{display:inline-flex;align-items:center;gap:10px;height:54px;padding:0 22px;border-radius:var(--r);background:var(--white);color:var(--ink);font-weight:700;border:0}
+.copy svg{width:16px;height:16px}
+.copy-ok{margin:14px 0 0;min-height:1.5em;color:var(--yellow);font-size:14px;position:relative;z-index:1}
+.dots{display:flex;gap:8px;margin-top:40px;position:relative;z-index:1}
+.dots i{width:40px;height:40px;border-radius:12px}
+footer{padding-block:28px 40px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
 
-    /* 像素云（清晰，前景） */
-    .cloud {
-      position: absolute;
-      width: 10px; height: 10px;
-      background: #fff;
-      box-shadow:
-        10px 0 0 #fff, 20px 0 0 #fff, 30px 0 0 #fff,
-        0 10px 0 #fff, 10px 10px 0 #fff, 20px 10px 0 #fff, 30px 10px 0 #fff, 40px 10px 0 #fff,
-        10px 20px 0 #fff, 20px 20px 0 #fff, 30px 20px 0 #fff;
-      animation: drift 12s ease-in-out infinite;
-    }
-    @keyframes drift {
-      0%, 100% { transform: translateX(0); }
-      50% { transform: translateX(22px); }
-    }
+.reader{position:fixed;inset:0;z-index:50;background:var(--paper);overflow-y:auto;padding-top:env(safe-area-inset-top,0px)}
+.reader .shell{max-width:760px;padding-block:36px 90px}
+.reader h1{font-size:clamp(34px,5vw,54px);text-transform:none;letter-spacing:-.03em;font-family:var(--cn-heavy);-webkit-text-stroke:0;line-height:1.2;margin-top:18px}
+.reader .meta{color:var(--muted);font-size:14px;margin-top:12px}
+.reader article p{font-size:17px;line-height:1.9}
+.reader article{font-size:17px;line-height:1.9;color:#2b2a27}
+.reader article h2{font-family:var(--cn-heavy);font-weight:900;font-size:clamp(24px,3vw,30px);line-height:1.35;color:var(--ink);margin:56px 0 16px;padding-top:20px;border-top:2px solid var(--ink)}
+.reader article h3{font-family:var(--cn-heavy);font-weight:900;font-size:21px;line-height:1.45;color:var(--ink);margin:36px 0 10px}
+.reader article h4{font-size:17px;font-weight:700;color:var(--ink);margin:26px 0 6px}
+.reader article ul,.reader article ol{padding-left:1.4em;display:grid;gap:8px}
+.reader article li::marker{color:var(--red);font-weight:700}
+.reader article strong{color:var(--ink)}
+.reader article blockquote{margin:24px 0;padding:24px 28px;border-radius:var(--r);background:var(--yellow);color:var(--ink);font-family:var(--cn-heavy);font-weight:900;font-size:20px;line-height:1.6}
+.fig{margin:32px 0;background:var(--white);border-radius:var(--r);box-shadow:0 0 0 1px var(--line);padding:22px 18px 16px}
+.fig-scroll{overflow-x:auto}
+.fig svg{display:block;width:100%;min-width:560px;height:auto}
+.fig figcaption{margin-top:12px;font-size:13px;color:var(--muted);text-align:center}
+.art.feat{grid-column:1/-1;flex-direction:row;align-items:flex-end;gap:32px;min-height:0;background:var(--ink);color:var(--white)}
+.art.feat h3{font-size:clamp(24px,2.8vw,34px);max-width:22em}
+.art.feat p{color:#c9c7c0;max-width:34em}
+.art.feat .foot{color:#c9c7c0;flex-direction:column;align-items:flex-end;gap:14px;margin-top:0;white-space:nowrap}
+.art.feat .foot .circ{background:var(--white);color:var(--ink);width:44px;height:44px}
+.art.feat .kind{background:var(--yellow)!important;color:var(--ink)!important}
+.art.feat .txt{display:flex;flex-direction:column;gap:14px;flex:1;min-width:0}
+@media (max-width:860px){.art.feat{flex-direction:column;align-items:stretch}.art.feat .foot{flex-direction:row;align-items:center;justify-content:space-between}}
 
-    /* 绿色水管 */
-    .pipe { position: absolute; bottom: 26px; }
-    .pipe .p-top {
-      width: 64px; height: 26px;
-      background: var(--green);
-      border: 3px solid #0a0e21;
-      box-shadow: inset -4px -4px 0 var(--green-deep), inset 4px 4px 0 rgba(255,255,255,.3);
-    }
-    .pipe .p-body {
-      width: 46px; height: 70px;
-      margin: 0 auto;
-      background: var(--green);
-      border: 3px solid #0a0e21;
-      border-top: none;
-      box-shadow: inset -4px 0 0 var(--green-deep), inset 4px 0 0 rgba(255,255,255,.28);
-    }
+.reader .ph{border:1.5px dashed var(--rule);border-radius:16px;padding:20px;color:var(--muted)}
 
-    /* 问号方块 */
-    .qblock {
-      position: absolute;
-      bottom: 26px;
-      width: 52px; height: 52px;
-      background: var(--gold);
-      border: 3px solid #0a0e21;
-      box-shadow: inset -5px -5px 0 var(--gold-deep), inset 5px 5px 0 rgba(255,255,255,.45);
-      display: grid;
-      place-items: center;
-      font-family: var(--font-px-en);
-      font-size: 20px;
-      color: #fff;
-      text-shadow: 2px 2px 0 rgba(0,0,0,.5);
-      cursor: pointer;
-      animation: qbob 1.6s ease-in-out infinite;
-      user-select: none;
-    }
-    .qblock:hover { filter: brightness(1.12); animation-play-state: paused; }
-    @keyframes qbob {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-    /* 弹出来的金币 */
-    .coin-pop {
-      position: absolute;
-      width: 24px; height: 24px;
-      border-radius: 50%;
-      background: var(--gold);
-      border: 3px solid var(--gold-deep);
-      box-shadow: inset 0 0 0 3px #ffe27a, 0 0 14px rgba(255,207,63,.8);
-      animation: coinpop 1s cubic-bezier(.2, .7, .3, 1) forwards;
-      pointer-events: none;
-    }
-    @keyframes coinpop {
-      0% { opacity: 0; transform: translateY(0) scale(.5); }
-      15% { opacity: 1; }
-      60% { transform: translateY(-64px) scale(1); }
-      100% { opacity: 0; transform: translateY(-80px) scale(.9); }
-    }
-
-    /* 蘑菇 */
-    .mushroom { position: absolute; bottom: 26px; width: 44px; }
-    .mushroom .cap {
-      width: 44px; height: 26px;
-      background: var(--red);
-      border: 3px solid #0a0e21;
-      border-radius: 24px 24px 0 0;
-      position: relative;
-      box-shadow: inset -4px -3px 0 var(--red-deep);
-    }
-    .mushroom .cap::before {
-      content: "";
-      position: absolute;
-      top: 4px; left: 8px;
-      width: 9px; height: 9px;
-      background: #fff;
-      border: 2px solid #0a0e21;
-      border-radius: 50%;
-    }
-    .mushroom .cap::after {
-      content: "";
-      position: absolute;
-      top: 12px; right: 7px;
-      width: 9px; height: 9px;
-      background: #fff;
-      border: 2px solid #0a0e21;
-      border-radius: 50%;
-    }
-    .mushroom .stem {
-      width: 20px; height: 22px;
-      margin: 0 auto;
-      background: var(--skin);
-      border: 3px solid #0a0e21;
-      border-top: none;
-      position: relative;
-    }
-    .mushroom .eye {
-      position: absolute;
-      left: 4px; top: 4px;
-      width: 7px; height: 11px;
-      background: #0a0e21;
-      border-radius: 50%;
-      box-shadow: 9px 0 0 #0a0e21;
-    }
-
-    /* 小马里奥（像素小人） */
-    .mario {
-      position: absolute;
-      bottom: 26px;
-      left: 0;
-      width: 36px;
-      height: 52px;
-      transition: left .15s linear, transform .45s cubic-bezier(.3, .7, .4, 1);
-      cursor: pointer;
-      transform-origin: bottom center;
-      will-change: transform, left;
-    }
-    .mario .m-hat {
-      width: 30px; height: 12px;
-      margin: 0 auto;
-      background: var(--red);
-      border: 3px solid #0a0e21;
-      box-shadow: inset 0 -3px 0 var(--red-deep);
-    }
-    .mario .m-face {
-      width: 26px; height: 14px;
-      margin: 0 auto;
-      background: var(--skin);
-      border: 3px solid #0a0e21;
-      border-top: none;
-      position: relative;
-    }
-    .mario .m-face::before {
-      content: "";
-      position: absolute;
-      right: 3px; top: 2px;
-      width: 5px; height: 6px;
-      background: #0a0e21;
-    }
-    .mario .m-body {
-      width: 32px; height: 14px;
-      margin: 0 auto;
-      background: var(--red);
-      border: 3px solid #0a0e21;
-      box-shadow: inset 0 -3px 0 var(--red-deep);
-    }
-    .mario .m-legs {
-      width: 32px; height: 12px;
-      margin: 0 auto;
-      background: var(--blue);
-      border: 3px solid #0a0e21;
-      border-top: none;
-      box-shadow: inset 0 3px 0 var(--blue-deep);
-    }
-
-    /* 问号方块被顶后变灰 */
-    .qblock.used {
-      background: #5a6173;
-      box-shadow: inset -5px -5px 0 #3d4352, inset 5px 5px 0 rgba(255,255,255,.14);
-      animation: none;
-      color: transparent;
-      cursor: default;
-      filter: none;
-    }
-
-    /* 蘑菇被吃掉后消失 */
-    .mushroom.eaten {
-      pointer-events: none;
-      animation: marioEat .55s ease-in forwards;
-    }
-    @keyframes marioEat {
-      0% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
-      35% { opacity: 1; transform: translateY(-16px) scale(1.06) rotate(-6deg); }
-      100% { opacity: 0; transform: translateY(-34px) scale(.15) rotate(24deg); }
-    }
-
-    /* 吃蘑菇后无敌彩虹闪烁 */
-    .mario.invincible {
-      animation: invincible .5s linear infinite;
-    }
-    @keyframes invincible {
-      0%, 100% { filter: none; }
-      25% { filter: hue-rotate(90deg) brightness(1.45); }
-      50% { filter: hue-rotate(180deg) brightness(1.55); }
-      75% { filter: hue-rotate(270deg) brightness(1.45); }
-    }
-
-    /* 吃蘑菇时迸出的星星粒子 */
-    .sparkle-particle {
-      position: absolute;
-      pointer-events: none;
-      z-index: 6;
-      animation: sparkleRise .8s ease-out forwards;
-    }
-    @keyframes sparkleRise {
-      0% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
-      100% { opacity: 0; transform: translateY(-54px) scale(.25) rotate(120deg); }
-    }
-
-    /* POWER UP 文字 */
-    .powerup-text {
-      position: absolute;
-      font-family: var(--font-px-en);
-      font-size: 16px;
-      color: #fff;
-      text-shadow: 2px 2px 0 var(--red-deep), 0 0 14px rgba(255,255,255,.6);
-      animation: powerupPop 1.1s ease-out forwards;
-      pointer-events: none;
-      z-index: 6;
-      letter-spacing: 1px;
-    }
-    @keyframes powerupPop {
-      0% { opacity: 0; transform: translateY(10px) scale(.4); }
-      20% { opacity: 1; transform: translateY(0) scale(1.15); }
-      40% { transform: translateY(-6px) scale(1); }
-      100% { opacity: 0; transform: translateY(-40px) scale(1); }
-    }
-
-    /* 浮动得分文字 */
-    .float-score {
-      position: absolute;
-      font-family: var(--font-px-en);
-      font-size: 15px;
-      color: var(--gold);
-      text-shadow: 2px 2px 0 rgba(0,0,0,.55);
-      animation: floatUp .9s ease-out forwards;
-      pointer-events: none;
-      z-index: 5;
-    }
-    @keyframes floatUp {
-      0% { opacity: 0; transform: translateY(6px); }
-      25% { opacity: 1; }
-      100% { opacity: 0; transform: translateY(-38px); }
-    }
-
-    /* 顶方块时的屏幕震动 */
-    .stage.shake { animation: shake .3s ease; }
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      20% { transform: translateX(-5px); }
-      40% { transform: translateX(5px); }
-      60% { transform: translateX(-3px); }
-      80% { transform: translateX(3px); }
-    }
-
-    /* 计分板数字弹跳 */
-    .score-pop { animation: scorepop .4s ease; }
-    @keyframes scorepop {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.5); color: #fff; }
-      100% { transform: scale(1); }
-    }
-
-    /* ============ 通用标题 ============ */
-    section { padding: 88px 0; }
-    .sec-head { margin-bottom: 54px; }
-    .sec-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--font-px-en);
-      font-size: 11px;
-      letter-spacing: 2px;
-      color: var(--gold);
-    }
-    .sec-tag::before {
-      content: "";
-      width: 8px; height: 8px;
-      background: var(--gold);
-      box-shadow: 0 0 10px rgba(255,207,63,.7);
-    }
-    .sec-title {
-      font-family: var(--font-pixel);
-      font-size: clamp(26px, 4vw, 38px);
-      margin-top: 14px;
-      line-height: 1.35;
-      color: #fff;
-    }
-    .sec-desc {
-      font-family: var(--font-cute);
-      color: var(--ink-dim);
-      margin-top: 14px;
-      max-width: 640px;
-      font-size: 17px;
-    }
-
-    /* ============ 关于我 ============ */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 54px;
-      align-items: start;
-    }
-    .about-text p {
-      color: var(--ink-dim);
-      margin-bottom: 16px;
-    }
-    .about-text p b { color: #fff; font-weight: 600; }
-    .about-text p .hl { color: var(--gold); }
-    .about-highlights {
-      list-style: none;
-      display: grid;
-      gap: 14px;
-      margin-top: 26px;
-    }
-    .about-highlights li {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      font-size: 15px;
-      color: var(--ink-dim);
-    }
-    .about-highlights .mark {
-      flex-shrink: 0;
-      width: 24px; height: 24px;
-      background: var(--card);
-      border: 2px solid var(--card-line);
-      color: var(--gold);
-      display: grid;
-      place-items: center;
-      font-size: 13px;
-      margin-top: 1px;
-    }
-    .about-card {
-      background: var(--card);
-      border: 2px solid var(--card-line);
-      padding: 32px;
-      box-shadow: inset -4px -4px 0 #0a0f24, 0 10px 30px rgba(0,0,0,.25);
-      position: relative;
-    }
-    .about-card h3 {
-      font-family: var(--font-pixel);
-      font-size: 17px;
-      margin-bottom: 22px;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .about-card h3 .lv {
-      color: var(--gold);
-      font-family: var(--font-px-en);
-      font-size: 10px;
-      background: var(--bg-2);
-      border: 2px solid var(--card-line);
-      padding: 4px 8px;
-      margin-left: auto;
-    }
-    .about-card .skill-row { margin-bottom: 18px; }
-    .about-card .skill-row:last-child { margin-bottom: 0; }
-    .skill-label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 13.5px;
-      color: var(--ink-dim);
-      margin-bottom: 8px;
-      font-family: var(--font-pixel);
-    }
-    .skill-label b { color: var(--gold); font-weight: 400; display: inline-block; }
-    .skill-label b.flash { animation: numflash .6s ease; }
-    @keyframes numflash {
-      0%, 100% { color: var(--gold); transform: scale(1); }
-      50% { color: #fff; transform: scale(1.4); }
-    }
-    .bar {
-      height: 12px;
-      background: #0a0f24;
-      border: 2px solid var(--card-line);
-      padding: 2px;
-      position: relative;
-    }
-    .bar i {
-      display: block;
-      height: 100%;
-      width: 0;
-      background: repeating-linear-gradient(90deg, var(--blue) 0 10px, var(--blue-deep) 10px 20px);
-      transition: width 1.2s cubic-bezier(.22, .68, 0, 1);
-      position: relative;
-    }
-    /* 经验条涨满后闪光 */
-    .bar.full i { box-shadow: 0 0 12px rgba(79, 140, 255, .9); }
-    .bar.full::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.7), transparent);
-      animation: barGlint 1s ease 1;
-    }
-    @keyframes barGlint {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
-    }
-
-    /* ============ 能力专长 ============ */
-    .cap-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .cap-card {
-      background: var(--card);
-      border: 2px solid var(--card-line);
-      padding: 30px 28px;
-      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-      box-shadow: inset -4px -4px 0 #0a0f24;
-      cursor: pointer;
-      position: relative;
-      user-select: none;
-    }
-    .cap-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--gold);
-      box-shadow: inset -4px -4px 0 #0a0f24, 0 16px 34px rgba(0,0,0,.3);
-    }
-    /* 点击卡片时像被顶起来一样弹跳 */
-    .cap-card.bounce { animation: capBounce .5s ease; }
-    @keyframes capBounce {
-      0% { transform: translateY(0); }
-      35% { transform: translateY(-18px); }
-      70% { transform: translateY(0); }
-      85% { transform: translateY(-6px); }
-      100% { transform: translateY(0); }
-    }
-    /* 从卡片顶部弹出的像素道具 */
-    .cap-item-pop {
-      position: absolute;
-      top: -14px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 40px;
-      line-height: 1;
-      pointer-events: none;
-      z-index: 6;
-      filter: drop-shadow(2px 2px 0 rgba(0,0,0,.5));
-      animation: capItemPop .9s ease-out forwards;
-    }
-    @keyframes capItemPop {
-      0% { opacity: 0; transform: translate(-50%, 8px) scale(.4) rotate(0deg); }
-      25% { opacity: 1; transform: translate(-50%, -12px) scale(1.15) rotate(-8deg); }
-      100% { opacity: 0; transform: translate(-50%, -64px) scale(.9) rotate(10deg); }
-    }
-    .cap-icon {
-      width: 54px; height: 54px;
-      background: var(--bg-2);
-      border: 2px solid var(--card-line);
-      color: var(--gold);
-      display: grid;
-      place-items: center;
-      margin-bottom: 20px;
-      box-shadow: inset -3px -3px 0 #0a0f24;
-    }
-    .cap-icon svg { width: 26px; height: 26px; }
-    .cap-card h3 {
-      font-family: var(--font-pixel);
-      font-size: 17px;
-      margin-bottom: 10px;
-      color: #fff;
-    }
-    .cap-card p {
-      font-size: 14.5px;
-      color: var(--ink-dim);
-    }
-
-    /* ============ 项目作品 ============ */
-    .proj-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 26px;
-    }
-    .proj-card {
-      background: var(--card);
-      border: 2px solid var(--card-line);
-      overflow: hidden;
-      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-      display: flex;
-      flex-direction: column;
-      box-shadow: inset -4px -4px 0 #0a0f24;
-    }
-    .proj-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--blue);
-      box-shadow: inset -4px -4px 0 #0a0f24, 0 16px 34px rgba(0,0,0,.3);
-    }
-    .proj-cover {
-      height: 160px;
-      position: relative;
-      overflow: hidden;
-      display: grid;
-      place-items: center;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-    .proj-cover .proj-emoji {
-      font-size: 30px;
-      font-family: var(--font-px-en);
-      color: rgba(255,255,255,.9);
-      pointer-events: none;
-    }
-    .proj-cover.has-img .proj-emoji { opacity: 0; }
-    .proj-cover .proj-tag {
-      position: absolute;
-      top: 14px; left: 14px;
-      background: rgba(10, 14, 33, .75);
-      border: 2px solid var(--card-line);
-      color: var(--gold);
-      font-family: var(--font-pixel);
-      font-size: 11px;
-      padding: 5px 12px;
-      z-index: 2;
-    }
-    .upload-btn {
-      position: absolute;
-      right: 12px; bottom: 12px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: var(--font-pixel);
-      font-size: 11px;
-      color: #fff;
-      background: rgba(10, 14, 33, .78);
-      border: 2px solid var(--card-line);
-      padding: 7px 12px;
-      cursor: pointer;
-      z-index: 2;
-      transition: border-color .2s ease, color .2s ease;
-    }
-    .upload-btn:hover { border-color: var(--gold); color: var(--gold); }
-    .upload-btn input { display: none; }
-    .upload-hint {
-      position: absolute;
-      left: 14px; bottom: 14px;
-      font-family: var(--font-cute);
-      font-size: 12px;
-      color: rgba(255,255,255,.85);
-      text-shadow: 1px 1px 0 rgba(0,0,0,.6);
-      z-index: 2;
-      pointer-events: none;
-    }
-    .proj-cover.has-img .upload-hint { display: none; }
-    .proj-body { padding: 24px 26px; flex: 1; display: flex; flex-direction: column; }
-    .proj-body h3 { font-family: var(--font-pixel); font-size: 18px; margin-bottom: 10px; color: #fff; }
-    .proj-body p { font-size: 14.5px; color: var(--ink-dim); flex: 1; }
-    .proj-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 18px;
-    }
-    .proj-meta span {
-      font-family: var(--font-pixel);
-      font-size: 10px;
-      color: var(--ink-dim);
-      border: 1px solid var(--card-line);
-      background: var(--bg-2);
-      padding: 5px 10px;
-    }
-
-    /* ============ 经历时间线 ============ */
-    .timeline { position: relative; padding-left: 34px; }
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 9px; top: 6px; bottom: 6px;
-      width: 3px;
-      background: var(--card-line);
-    }
-    .tl-item { position: relative; padding-bottom: 38px; }
-    .tl-item:last-child { padding-bottom: 0; }
-    .tl-item::before {
-      content: "";
-      position: absolute;
-      left: -34px; top: 6px;
-      width: 18px; height: 18px;
-      background: var(--red);
-      border: 3px solid #0a0e21;
-      box-shadow: 0 0 10px rgba(255, 90, 78, .7);
-    }
-    .tl-item .tl-time {
-      font-family: var(--font-px-en);
-      font-size: 11px;
-      color: var(--gold);
-      letter-spacing: 1px;
-    }
-    .tl-item h3 {
-      font-family: var(--font-pixel);
-      font-size: 19px;
-      margin: 6px 0 4px;
-      color: #fff;
-    }
-    .tl-item .tl-org { font-size: 14px; color: var(--ink-faint); }
-    .tl-item p {
-      font-size: 14.5px;
-      color: var(--ink-dim);
-      margin-top: 10px;
-      max-width: 680px;
-    }
-
-    /* ============ 联系 ============ */
-    .contact {
-      background: var(--card);
-      border: 2px solid var(--card-line);
-      padding: 64px 56px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: inset -5px -5px 0 #0a0f24;
-    }
-    .contact::before {
-      content: "";
-      position: absolute;
-      right: -70px; bottom: -90px;
-      width: 320px; height: 320px;
-      background: radial-gradient(circle, rgba(79,140,255,.45), transparent 70%);
-      border-radius: 50%;
-    }
-    .contact .sec-title { color: #fff; }
-    .contact .sec-desc { color: var(--ink-dim); }
-    .contact-inner { position: relative; z-index: 1; }
-    .contact-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 32px;
-    }
-    .contact-links a {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 22px;
-      border: 2px solid var(--card-line);
-      background: var(--bg-2);
-      font-family: var(--font-pixel);
-      font-size: 12px;
-      color: var(--ink);
-      transition: all .2s ease;
-      box-shadow: inset -3px -3px 0 #0a0f24;
-    }
-    .contact-links a:hover {
-      background: var(--blue);
-      border-color: var(--blue);
-      color: #fff;
-    }
-    .contact-links a svg { width: 17px; height: 17px; }
-
-    /* ============ 页脚 ============ */
-    footer {
-      padding: 40px 0 56px;
-      text-align: center;
-      color: var(--ink-faint);
-      font-family: var(--font-cute);
-      font-size: 15px;
-    }
-    footer .px { font-family: var(--font-px-en); font-size: 9px; color: var(--ink-faint); margin-top: 8px; letter-spacing: 1px; }
-
-    /* ============ 滚动动画 ============ */
-    .reveal {
-      opacity: 0;
-      transform: translateY(26px);
-      transition: opacity .7s ease, transform .7s cubic-bezier(.22,.68,0,1);
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* ============ 响应式 ============ */
-    @media (max-width: 860px) {
-      .nav-links {
-        position: fixed;
-        top: 0; right: 0;
-        height: 100vh;
-        width: 250px;
-        background: var(--bg-2);
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        padding: 0 36px;
-        gap: 26px;
-        box-shadow: -24px 0 50px rgba(0,0,0,.4);
-        transform: translateX(100%);
-        transition: transform .4s ease;
-        z-index: 99;
-      }
-      .nav-links.open { transform: translateX(0); }
-      .burger { display: flex; z-index: 101; }
-      .about-grid { grid-template-columns: 1fr; gap: 36px; }
-      .cap-grid { grid-template-columns: 1fr; }
-      .proj-grid { grid-template-columns: 1fr; }
-      .contact { padding: 46px 30px; }
-      .hero h1 { -webkit-text-stroke: 2px var(--blue); }
-      .stage { height: 120px; }
-      .pipe .p-body { height: 54px; }
-    }
-  </style>
+/* ===== RESPONSIVE ===== */
+@media (max-width:1100px){
+  .nav{display:none}
+  .hero-copy{max-width:46%}
+  h1{font-size:clamp(48px,6.4vw,76px)}
+}
+@media (max-width:860px){
+  .util .loc{display:none}
+  .util{padding-inline:20px}
+  .main-row{padding:12px 12px 12px 20px;gap:12px}
+  .logo b{font-size:24px}
+  .pill{height:48px;padding:0 18px;font-size:15px}
+  .round{width:50px;height:50px}
+  .hero{min-height:0;overflow:visible}
+  .hero-copy{max-width:none;padding-top:170px;padding-bottom:40px}
+  h1{font-size:clamp(46px,13vw,80px)}
+  .grid{position:relative;right:auto;top:auto;bottom:auto;width:auto;height:min(520px,120vw);overflow:hidden;border-radius:var(--r);--col:calc((100% - 2*var(--gap))/3);margin-left:max(24px,env(safe-area-inset-left,0px));margin-right:max(24px,env(safe-area-inset-right,0px))}
+  .skills,.arts{grid-template-columns:1fr}
+  .skill{min-height:0}
+  .job{grid-template-columns:1fr}
+  .when{padding:22px 24px;gap:10px}
+  .when b{font-size:44px}
+  .stages{grid-template-columns:1fr}
+  .sec-head{grid-template-columns:1fr}
+}
+@media (max-width:420px){
+  .util{font-size:12px}
+  .round{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .col,h1 .ln span,.fade-up{animation:none!important}
+  .fold,.toggle .pm{transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
 </head>
 <body>
-
-  <!-- 背景层：夜空 + 模糊照片 + 星星贴纸 -->
-  <div class="bg-sky"></div>
-  <div class="bg-photo" id="bgPhoto">
-    <div class="bp-moon"></div>
-    <div class="bp-hill h1"></div>
-    <div class="bp-hill h2"></div>
-    <div class="bp-hill h3"></div>
-    <div class="bp-glow g1"></div>
-    <div class="bp-glow g2"></div>
-    <div class="bp-cloud c1"></div>
-    <div class="bp-cloud c2"></div>
-  </div>
-  <div class="stars" id="stars"></div>
-
-  <!-- 顶部导航 -->
-  <nav class="nav" id="nav">
-    <div class="container nav-inner">
-      <a href="#" class="logo"><span class="logo-coin"></span>柔<span> · AI</span></a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#about">关于</a></li>
-        <li><a href="#capabilities">能力</a></li>
-        <li><a href="#work">项目</a></li>
-        <li><a href="#experience">经历</a></li>
-        <li><a href="#contact">联系</a></li>
-      </ul>
-      <button class="burger" id="burger" aria-label="菜单">
-        <span></span><span></span><span></span>
-      </button>
+<div class="shell" style="position:relative">
+  <header class="hdr">
+    <div class="util">
+      <span class="status"><i></i>开放新的工作机会</span>
+      <span class="loc"><span>AI 产品经理</span></span>
     </div>
-  </nav>
-
-  <!-- Hero -->
-  <header class="hero">
-    <div class="container">
-      <div class="hero-eyebrow"><span class="dot"></span>PLAYER 1 · 柔</div>
-      <h1>AI<br><span class="wave">产品经理</span></h1>
-      <p class="hero-sub">把一个个脑洞<span class="spark"> ✨ </span>酿成大家爱不释手的产品</p>
-      <div class="hero-actions">
-        <a href="#work" class="btn btn-primary">开始探险</a>
-        <a href="#contact" class="btn btn-ghost">联系我</a>
-      </div>
-      <div class="scoreboard">
-        <span class="coin-ico"></span>
-        <span>COINS</span>
-        <b id="score">00</b>
-        <span class="hint">← → 移动 · 空格跳 · 顶方块 · 吃蘑菇</span>
-      </div>
-
-      <!-- 游戏场景 -->
-      <div class="stage" id="stage">
-        <div class="cloud" style="top: 6px; left: 8%;"></div>
-        <div class="cloud" style="top: 30px; right: 14%;"></div>
-        <div class="pipe" style="left: 3%;"><div class="p-top"></div><div class="p-body"></div></div>
-        <div class="mushroom" id="mushroom" style="left: 20%;">
-          <div class="cap"></div>
-          <div class="stem"><span class="eye"></span></div>
-        </div>
-        <div class="qblock" style="left: 34%;">?</div>
-        <div class="qblock" style="left: 46%;">?</div>
-        <div class="qblock" style="left: 58%;">?</div>
-        <div class="mario" id="mario">
-          <div class="m-hat"></div>
-          <div class="m-face"></div>
-          <div class="m-body"></div>
-          <div class="m-legs"></div>
-        </div>
-        <div class="ground"></div>
-      </div>
+    <div class="main-row">
+      <a class="logo" href="#top" id="top" aria-label="平柔 首页"><b>PING ROU</b><small>AI PRODUCT MANAGER · 平柔</small></a>
+      <nav class="nav" aria-label="主导航">
+        <a class="nav-first" href="#skills">能力 <span class="circ"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
+        <span class="sep"></span>
+        <a href="#projects">项目</a>
+        <a href="#writing">文章</a>
+      </nav>
+      <a class="cta" href="#contact" aria-label="联系我">
+        <span class="pill">联系我</span>
+        <span class="round"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg></span>
+      </a>
     </div>
   </header>
+</div>
 
-  <!-- 关于我 -->
-  <section id="about">
-    <div class="container">
-      <div class="sec-head reveal">
-        <div class="sec-tag">ABOUT</div>
-        <h2 class="sec-title">你好，我是柔</h2>
-        <p class="sec-desc">一名把「复杂 AI」翻译成「简单好用」的产品经理。</p>
+<section class="hero">
+  <div class="shell">
+    <div class="hero-copy">
+      <h1 aria-label="Discover. Define. Deliver.">
+        <span class="ln"><span>Discover<i class="dot">.</i></span></span>
+        <span class="ln"><span>Define<i class="dot">.</i></span></span>
+        <span class="ln"><span>Deliver<i class="dot">.</i></span></span>
+      </h1>
+      <p class="intro fade-up d1">从业务里找到值得用 AI 解决的问题，把方案定义清楚，再推动它上线，<strong>用数据证明它真的有用</strong>。</p>
+      <div class="acts fade-up d2">
+        <a class="group" href="#projects"><span class="pill">查看项目</span><span class="round"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg></span></a>
+        <a class="link-arrow" href="#writing">读我的文章 <span class="circ"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a>
       </div>
-      <div class="about-grid">
-        <div class="about-text reveal">
-          <p>我是柔，一名 <b>AI 产品经理</b>，站在<b>业务、技术与用户</b>三者的交汇点上，负责从 0 到 1 定义产品、拆解需求、推动算法与工程协作，把产品稳稳落到真实场景里。</p>
-          <p>我擅长把复杂的 AI 能力，翻译成清晰的产品方案：从<b>需求洞察、场景定义、模型评测</b>，到<b>数据闭环与增长迭代</b>。我相信好的 AI 产品不是炫技，而是<span class="hl">「润物细无声」的价值交付</span>。</p>
-          <ul class="about-highlights">
-            <li><span class="mark">✓</span>既能和算法工程师聊模型指标，也能和业务方谈商业价值</li>
-            <li><span class="mark">✓</span>习惯用数据说话，建立可量化的产品评估体系</li>
-            <li><span class="mark">✓</span>关注 AI 体验与责任，让技术向善、好用</li>
-          </ul>
-        </div>
-        <div class="about-card reveal">
-          <h3>核心能力条<span class="lv">LEVEL 3</span></h3>
-          <div class="skill-row">
-            <div class="skill-label"><span>产品规划与需求分析</span><b>95%</b></div>
-            <div class="bar"><i data-w="95"></i></div>
-          </div>
-          <div class="skill-row">
-            <div class="skill-label"><span>AI 模型评估与调优</span><b>90%</b></div>
-            <div class="bar"><i data-w="90"></i></div>
-          </div>
-          <div class="skill-row">
-            <div class="skill-label"><span>数据分析与增长</span><b>88%</b></div>
-            <div class="bar"><i data-w="88"></i></div>
-          </div>
-          <div class="skill-row">
-            <div class="skill-label"><span>跨团队协作与项目管理</span><b>92%</b></div>
-            <div class="bar"><i data-w="92"></i></div>
-          </div>
-        </div>
-      </div>
+    </div>
+  </div>
+  <div class="grid" aria-hidden="true" id="grid"></div>
+</section>
+
+<main class="shell">
+  <section class="sec" id="skills">
+    <div class="sec-head"><h2>What I do<span>能力</span></h2><p>一个 AI 功能从想法到上线，我负责的三件事。</p></div>
+    <div class="skills">
+      <article class="skill red">
+        <span class="no">01 / DISCOVER</span>
+        <h3>Discover<small>发现值得做的问题</small></h3>
+        <ul><li>用户访谈与业务流程梳理</li><li>竞品拆解，找到机会和差异点</li><li>判断 AI 在这个场景能不能做好、值不值得做</li></ul>
+      </article>
+      <article class="skill yellow">
+        <span class="no">02 / DEFINE</span>
+        <h3>Define<small>把方案定义清楚</small></h3>
+        <ul><li>PRD、原型、流程图</li><li>AI 能力选型与 Prompt 设计</li><li>MVP 范围和效果指标</li></ul>
+      </article>
+      <article class="skill blue">
+        <span class="no">03 / DELIVER</span>
+        <h3>Deliver<small>推动上线并验证</small></h3>
+        <ul><li>和研发、设计协作，把控节奏</li><li>上线后看数据、组织复盘</li><li>根据反馈持续迭代</li></ul>
+      </article>
     </div>
   </section>
 
-  <!-- 能力专长 -->
-  <section id="capabilities">
-    <div class="container">
-      <div class="sec-head reveal">
-        <div class="sec-tag">POWER-UPS</div>
-        <h2 class="sec-title">我的「道具」</h2>
-        <p class="sec-desc">像收集金币和蘑菇一样，攒下这几样关键能力。</p>
-      </div>
-      <div class="cap-grid">
-        <div class="cap-card reveal" data-item="⭐">
-          <div class="cap-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg>
+  <section class="sec" id="projects">
+    <div class="sec-head"><h2>Projects<span>项目</span></h2><p>擅长把一线业务流程拆成 AI 能稳定完成的任务，并用评测和数据证明效果。</p></div>
+    <div class="jobs">
+      <article class="job">
+        <div class="when red-m"><b>75%</b><span>AI 推荐话术采纳率<br>复杂排障误答率 −40%</span></div>
+        <div class="job-card">
+          <div class="job-top">
+            <div><h3>大模型数码排障 Copilot</h3><p>AI 产品经理</p></div>
           </div>
-          <h3>产品策略与定义</h3>
-          <p>洞察用户与市场，定义 AI 产品方向、核心价值主张与路线图，平衡技术可行性与商业价值。</p>
-        </div>
-        <div class="cap-card reveal" data-item="🍄">
-          <div class="cap-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
+          <div class="stages">
+            <div class="stage"><b>Discover</b><ul><li>新客服面对复杂硬件故障和多协议兼容问题，翻说明书单次超 3 分钟，误答率高</li><li>提出做排障 Copilot，完成需求论证、Demo 验证和立项</li></ul></div>
+            <div class="stage"><b>Define</b><ul><li>打通 500+ 份说明书、固件升级日志和近 10 万条优质工单，设计知识抽取、清洗与人工校对流程</li><li>Prompt 按平台通用层、3C 类目层、产品型号层分层管理</li><li>300 条真实排障任务评测集，做版本回归</li></ul></div>
+            <div class="stage"><b>Deliver</b><ul><li>新客服培训周期 3 周 → 3 天</li><li>大促首响时长 −35%，首次解决率 +28%</li><li>话术采纳率 75%，误答率 −40%</li></ul></div>
           </div>
-          <h3>大模型应用落地</h3>
-          <p>熟悉 LLM 应用范式，负责 Prompt 工程、RAG、微调与评测体系设计，让模型效果持续变好。</p>
         </div>
-        <div class="cap-card reveal" data-item="💰">
-          <div class="cap-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18"/><path d="M7 15l3-4 3 2 4-6"/></svg>
+      </article>
+      <article class="job">
+        <div class="when yellow-m"><b>65%+</b><span>AI 客服自动化分流率<br>平均首响时长 −45%</span></div>
+        <div class="job-card">
+          <div class="job-top">
+            <div><h3>AI 客服系统升级</h3><p>AI 产品经理</p></div>
           </div>
-          <h3>数据驱动与增长</h3>
-          <p>搭指标体系与看板，靠 A/B 实验和用户反馈闭环，持续迭代提升产品价值与留存。</p>
+          <div class="stages">
+            <div class="stage"><b>Discover</b><ul><li>全渠道海量数码配件咨询，常规问题大量占用人工坐席</li><li>目标是打通意图识别、FAQ 检索、推荐回复到满意度流转的全链路</li></ul></div>
+            <div class="stage"><b>Define</b><ul><li>沉淀充电器、音频、车载等品类 2000+ 条 FAQ 和高频意图路由规则</li><li>设计意图识别与多轮对话流程，设定转人工阈值和兜底机制</li><li>搭建准确率、转人工率、满意度监控看板</li></ul></div>
+            <div class="stage"><b>Deliver</b><ul><li>自动化分流率 65% 以上</li><li>平均首响时长缩短 45%</li><li>大促高峰服务承载能力提升近 2 倍</li></ul></div>
+          </div>
         </div>
-      </div>
+      </article>
+      <article class="job">
+        <div class="when blue-m"><b>55→71%</b><span>机器人问题解决率<br>知识维护人力 −45%</span></div>
+        <div class="job-card">
+          <div class="job-top">
+            <div><h3>大模型知识库问答改造（RAG）</h3><p>产品经理</p></div>
+          </div>
+          <div class="stages">
+            <div class="stage"><b>Discover</b><ul><li>原机器人依赖人工维护 FAQ</li><li>政企和金融客户的知识以制度文件和长文档为主，FAQ 覆盖不足</li></ul></div>
+            <div class="stage"><b>Define</b><ul><li>设计混合路由：高置信 FAQ 直答，长尾问题检索生成，敏感和低置信转人工</li><li>推动文档解析与切片优化，与算法确定混合检索 + 重排，召回率 70% → 87%</li><li>设计答案溯源和拒答策略；搭建 800 条离线评测集</li></ul></div>
+            <div class="stage"><b>Deliver</b><ul><li>问题解决率 55% → 71%，转人工率 −18%</li><li>知识维护人力下降约 45%</li><li>新客户上线周期 3 周 → 1 周</li></ul></div>
+          </div>
+        </div>
+      </article>
     </div>
   </section>
 
-  <!-- 项目作品 -->
-  <section id="work">
-    <div class="container">
-      <div class="sec-head reveal">
-        <div class="sec-tag">SELECTED WORK</div>
-        <h2 class="sec-title">闯过的关卡</h2>
-        <p class="sec-desc">我主导或深度参与的 AI 产品项目精选。</p>
-      </div>
-      <div class="proj-grid">
-        <div class="proj-card reveal">
-          <div class="proj-cover" style="background: linear-gradient(135deg, #1f4fd8, #4f8cff);">
-            <span class="proj-tag">AI 应用</span>
-            <span class="proj-emoji">💬</span>
-            <span class="upload-hint">暂无封面，可点击右下角上传</span>
-            <label class="upload-btn">📷 上传封面<input type="file" accept="image/*"></label>
-          </div>
-          <div class="proj-body">
-            <h3>智能客服助手</h3>
-            <p>基于大模型的智能客服产品，支持多轮对话与知识库问答，把人工转接率降低 40%，响应缩到秒级。</p>
-            <div class="proj-meta">
-              <span>LLM</span><span>RAG</span><span>产品设计</span><span>数据闭环</span>
-            </div>
-          </div>
-        </div>
-        <div class="proj-card reveal">
-          <div class="proj-cover" style="background: linear-gradient(135deg, #ff5a4e, #ff9a4e);">
-            <span class="proj-tag">AI 工具</span>
-            <span class="proj-emoji">✍️</span>
-            <span class="upload-hint">暂无封面，可点击右下角上传</span>
-            <label class="upload-btn">📷 上传封面<input type="file" accept="image/*"></label>
-          </div>
-          <div class="proj-body">
-            <h3>AI 内容生成平台</h3>
-            <p>面向营销场景的 AI 内容创作工具，通过模板 + 模型调优，把内容生产效率提升 3 倍以上。</p>
-            <div class="proj-meta">
-              <span>AIGC</span><span>Prompt 工程</span><span>增长</span>
-            </div>
-          </div>
-        </div>
-        <div class="proj-card reveal">
-          <div class="proj-cover" style="background: linear-gradient(135deg, #37d16b, #9be15d);">
-            <span class="proj-tag">AI 中台</span>
-            <span class="proj-emoji">🧩</span>
-            <span class="upload-hint">暂无封面，可点击右下角上传</span>
-            <label class="upload-btn">📷 上传封面<input type="file" accept="image/*"></label>
-          </div>
-          <div class="proj-body">
-            <h3>企业 AI 能力中台</h3>
-            <p>统一封装模型接入、评测与监控能力，给多条业务线提供标准化 AI 服务，省下重复建设成本。</p>
-            <div class="proj-meta">
-              <span>中台</span><span>模型评测</span><span>API 设计</span>
-            </div>
-          </div>
-        </div>
-        <div class="proj-card reveal">
-          <div class="proj-cover" style="background: linear-gradient(135deg, #ffcf3f, #ff9a4e);">
-            <span class="proj-tag">AI 数据</span>
-            <span class="proj-emoji">📊</span>
-            <span class="upload-hint">暂无封面，可点击右下角上传</span>
-            <label class="upload-btn">📷 上传封面<input type="file" accept="image/*"></label>
-          </div>
-          <div class="proj-body">
-            <h3>智能数据洞察</h3>
-            <p>自然语言驱动的数据查询与洞察产品，让业务同学通过对话就能完成分析，降低使用门槛。</p>
-            <div class="proj-meta">
-              <span>NL2SQL</span><span>BI</span><span>用户体验</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <section class="sec" id="writing">
+    <div class="sec-head"><h2>Writing<span>文章</span></h2><p>关于 AI 产品落地的一些思考。</p></div>
+    <div class="arts" id="arts"></div>
   </section>
 
-  <!-- 经历 -->
-  <section id="experience">
-    <div class="container">
-      <div class="sec-head reveal">
-        <div class="sec-tag">JOURNEY</div>
-        <h2 class="sec-title">一路打怪升级</h2>
-      </div>
-      <div class="timeline reveal">
-        <div class="tl-item">
-          <div class="tl-time">2023 — 至今</div>
-          <h3>高级 AI 产品经理</h3>
-          <div class="tl-org">某科技公司 · AI 事业部</div>
-          <p>负责大模型应用产品线的规划与落地，主导智能助手从 0 到 1 的构建，推动产品跑通商业化闭环。</p>
-        </div>
-        <div class="tl-item">
-          <div class="tl-time">2021 — 2023</div>
-          <h3>AI 产品经理</h3>
-          <div class="tl-org">某互联网公司 · 创新业务</div>
-          <p>负责 AI 内容生成产品，搭起模型评测与 Prompt 优化体系，实现用户规模与留存的持续增长。</p>
-        </div>
-        <div class="tl-item">
-          <div class="tl-time">2019 — 2021</div>
-          <h3>产品经理</h3>
-          <div class="tl-org">某互联网公司 · 数据产品</div>
-          <p>从数据产品入手积累方法论，逐步转向 AI 方向，为深耕人工智能产品打下扎实基础。</p>
-        </div>
-      </div>
+  <section class="contact" id="contact">
+    <span class="eyebrow">Get in touch · 联系我</span>
+    <div class="mail">
+      <span class="mail-addr" id="mail">2878694370@qq.com</span>
+      <button class="copy" id="copy" type="button"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2h-6A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>复制邮箱</button>
     </div>
+    <p class="copy-ok" id="copyok" role="status"></p>
+    <div class="dots" aria-hidden="true"><i style="background:var(--red)"></i><i style="background:var(--yellow)"></i><i style="background:var(--blue)"></i></div>
   </section>
 
-  <!-- 联系 -->
-  <section id="contact">
-    <div class="container">
-      <div class="contact reveal">
-        <div class="contact-inner">
-          <div class="sec-tag">CONTACT</div>
-          <h2 class="sec-title">一起做点有意思的 AI 产品吧</h2>
-          <p class="sec-desc">无论是产品合作、职位机会，还是单纯聊聊 AI 的点子，都欢迎来找我～</p>
-          <div class="contact-links">
-            <a href="mailto:2878694370@qq.com">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
-              2878694370@qq.com
-            </a>
-            <a href="#" onclick="return false;" id="copyMail">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-              复制邮箱
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <footer><span>© 2026 平柔 · AI Product Manager</span><span>Discover. Define. Deliver.</span></footer>
+</main>
 
-  <footer>
-    <div class="container">© 2026 柔 · 用产品思维，让 AI 落地生根 🍄</div>
-    <div class="container px">PRESS START TO CONTINUE</div>
-  </footer>
+<template id="tpl-ai-org">
+<p>在过去的一两年里，几乎没有一家企业能躲过 AI 的浪潮。从互联网大厂到传统制造企业，老板们纷纷下达命令：“全面拥抱大模型！”于是，企业开始大规模采购各种 AI 软件、开通大模型 API 额度、请讲师来给员工做 Prompt（提示词）培训。</p>
+<p>然而，几个月过去，复盘时大家却发现：业务效率并没有明显提升，成本也没降下来，所谓的“AI 转型”最后往往流于形式——员工用 AI 写了几篇公文、美化了几张 PPT，或者在客服场景里挡掉了几成基础咨询，但对于核心业务指标、利润增长和组织竞争力，几乎没有产生实质性改变。</p>
+<p>为什么市面上铺天盖地的 AI 工具，到了企业手里却成了“鸡肋”？</p>
+<p>根源在于，<strong>我们从一开始就用错了药方。</strong>绝大多数企业把 AI 当成了一个“拿来即用的新软件”，就像当年推行 Office 办公软件或 ERP 系统那样，以为只要发个账号、做个培训，员工就能自动用出成效。</p>
+<p>但现实是：<strong>AI 不是一个工具，而是一场对企业组织底座的重构。</strong>如果企业的组织架构、流程设计和生态站位没有发生根本性改变，再强大的大模型也带不动一个低效的传统组织。</p>
 
-  <script>
-    // ============ 音频：像素风音效（Web Audio，无需外部资源） ============
-    let actx = null;
-    function audioCtx() {
-      if (!actx) {
-        try { actx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {}
-      }
-      return actx;
-    }
-    function playCoin() {
-      const c = audioCtx(); if (!c) return;
-      const t = c.currentTime;
-      [987.77, 1318.51].forEach((freq, i) => {
-        const o = c.createOscillator(), g = c.createGain();
-        o.connect(g); g.connect(c.destination);
-        o.type = 'square'; o.frequency.value = freq;
-        const start = t + i * 0.09;
-        g.gain.setValueAtTime(0.12, start);
-        g.gain.exponentialRampToValueAtTime(0.001, start + 0.22);
-        o.start(start); o.stop(start + 0.22);
-      });
-    }
-    function playJump() {
-      const c = audioCtx(); if (!c) return;
-      const t = c.currentTime;
-      const o = c.createOscillator(), g = c.createGain();
-      o.connect(g); g.connect(c.destination);
-      o.type = 'square';
-      o.frequency.setValueAtTime(180, t);
-      o.frequency.exponentialRampToValueAtTime(720, t + 0.16);
-      g.gain.setValueAtTime(0.1, t);
-      g.gain.exponentialRampToValueAtTime(0.001, t + 0.2);
-      o.start(t); o.stop(t + 0.2);
-    }
-    function playPowerup() {
-      const c = audioCtx(); if (!c) return;
-      const t = c.currentTime;
-      [523.25, 659.25, 783.99, 1046.5].forEach((freq, i) => {
-        const o = c.createOscillator(), g = c.createGain();
-        o.connect(g); g.connect(c.destination);
-        o.type = 'square'; o.frequency.value = freq;
-        const start = t + i * 0.06;
-        g.gain.setValueAtTime(0.1, start);
-        g.gain.exponentialRampToValueAtTime(0.001, start + 0.12);
-        o.start(start); o.stop(start + 0.12);
-      });
-    }
-    function playLevelUp() {
-      const c = audioCtx(); if (!c) return;
-      const t = c.currentTime;
-      [392, 523.25, 659.25, 783.99, 1046.5].forEach((freq, i) => {
-        const o = c.createOscillator(), g = c.createGain();
-        o.connect(g); g.connect(c.destination);
-        o.type = 'square'; o.frequency.value = freq;
-        const start = t + i * 0.07;
-        g.gain.setValueAtTime(0.09, start);
-        g.gain.exponentialRampToValueAtTime(0.001, start + 0.16);
-        o.start(start); o.stop(start + 0.16);
-      });
-    }
-    function playItem() {
-      const c = audioCtx(); if (!c) return;
-      const t = c.currentTime;
-      const o = c.createOscillator(), g = c.createGain();
-      o.connect(g); g.connect(c.destination);
-      o.type = 'triangle';
-      o.frequency.setValueAtTime(600, t);
-      o.frequency.exponentialRampToValueAtTime(1200, t + 0.08);
-      g.gain.setValueAtTime(0.12, t);
-      g.gain.exponentialRampToValueAtTime(0.001, t + 0.18);
-      o.start(t); o.stop(t + 0.18);
-    }
+<h2>一、诊断框架：评估 AI 成效的“三层透视”</h2>
+<p>要想看清楚为什么很多公司用 AI 会失效，我们必须把视角从“软件好不好用”拉高到“组织合不合理”的高度。评估一家企业应用 AI 的真实成效，需要穿透表象，审视以下三个关键层级：</p>
+<figure class="fig"><div class="fig-scroll"><svg viewBox="0 0 820 420" role="img" aria-label="三层透视：任务层、协调层、生态位" font-family="Noto Sans SC,Inter,sans-serif">
+<text x="300" y="12" text-anchor="middle" font-size="11" fill="#62615d" letter-spacing="2">越往上，越难改，影响越致命</text>
+<path d="M175.0 20H425.0L475.0 112H125.0Z" fill="#ef5d44" stroke="#0f0f0e" stroke-width="2" stroke-linejoin="round"/>
+<text x="300" y="60" text-anchor="middle" font-size="19" font-weight="900" fill="#0f0f0e">第三层 · 业务生态位</text>
+<text x="300" y="86" text-anchor="middle" font-size="13.5" fill="#0f0f0e">市场要不要你：稀缺赚钱 vs 内卷吃亏</text>
+<path d="M493.0 66.0H640" stroke="#0f0f0e" stroke-width="1.5" stroke-dasharray="3 4"/>
+<circle cx="640" cy="66.0" r="4" fill="#0f0f0e"/>
+<text x="654" y="71.0" font-size="14" font-weight="700" fill="#0f0f0e">AI 只放大，不纠错</text>
+<path d="M125.0 122H475.0L525.0 214H75.0Z" fill="#fcdd71" stroke="#0f0f0e" stroke-width="2" stroke-linejoin="round"/>
+<text x="300" y="162" text-anchor="middle" font-size="19" font-weight="900" fill="#0f0f0e">第二层 · 组织协调层</text>
+<text x="300" y="188" text-anchor="middle" font-size="13.5" fill="#0f0f0e">跨部门、跨角色能否对齐，劲往一处使</text>
+<path d="M543.0 168.0H640" stroke="#0f0f0e" stroke-width="1.5" stroke-dasharray="3 4"/>
+<circle cx="640" cy="168.0" r="4" fill="#0f0f0e"/>
+<text x="654" y="173.0" font-size="14" font-weight="700" fill="#0f0f0e">AI 修不好错位的协同</text>
+<path d="M75.0 224H525.0L575.0 316H25.0Z" fill="#9fd5f7" stroke="#0f0f0e" stroke-width="2" stroke-linejoin="round"/>
+<text x="300" y="264" text-anchor="middle" font-size="19" font-weight="900" fill="#0f0f0e">第一层 · 具体任务层</text>
+<text x="300" y="290" text-anchor="middle" font-size="13.5" fill="#0f0f0e">具体工作流有没有被 AI 真正接住</text>
+<path d="M593.0 270.0H640" stroke="#0f0f0e" stroke-width="1.5" stroke-dasharray="3 4"/>
+<circle cx="640" cy="270.0" r="4" fill="#0f0f0e"/>
+<text x="654" y="275.0" font-size="14" font-weight="700" fill="#0f0f0e">零敲碎打不等于用了 AI</text>
+<text x="654" y="12" font-size="11" fill="#62615d" letter-spacing="2">常见失效</text>
+<rect x="25" y="344" width="550" height="56" rx="28" fill="#0f0f0e"/>
+<text x="300" y="378" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">组织适配 + 生态位赚钱，缺一个，AI 都容易白搭</text>
+</svg></div><figcaption>图 1 · 三层透视：从任务层到生态位，逐层判断 AI 为什么没有成效</figcaption></figure>
+<h3>1. 任务层：具体工作有没有被 AI 真正接住</h3>
+<p>这是最基础的一层。很多企业所谓的“用了 AI”，其实只是停留在任务层的零敲碎打上：员工在日常工作中偶尔用 ChatGPT 润色邮件，或者用 AI 翻译一段文档。这些应用虽然能带来微小的效率提升，但它没有深入到企业的核心业务生产线中。AI 并没有真正成为某个业务环节的主力“承接者”，而只是一个锦上添花的玩具。</p>
+<h3>2. 协调层：不同工作能不能对齐，大家劲往一处使</h3>
+<p>比具体任务更难的，是组织内部的<strong>协调</strong>。在传统的企业运营中，最消耗成本的往往不是干活本身，而是“沟通、对齐、推诿、扯皮”。</p>
+<ul><li>销售部门想要 A，产品部门做成了 B，运营部门拿到手发现需要的是 C。</li><li>跨部门开会永远在掰扯“这个事情归谁管”、“上周那个进度到哪里了”。</li></ul>
+<p>如果企业的协调层本身就是混乱的、信息是割裂的，那么引入 AI 之后，只会让每个人以更快的速度制造出更多的垃圾信息和混乱文件。AI 无法自动修复一个本就错位的组织协同机制。</p>
+<h3>3. 生态位：市场到底要不要你</h3>
+<p>这是最顶层、也是最残酷的一层判断。企业必须清醒地意识到：<strong>AI 只是一个生产力放大器，它不具备战略纠错能力。</strong></p>
+<ul><li>如果一家企业身处红海内卷、产品同质化严重、商业模式本身就不赚钱的“吃亏生态位”里，那么 AI 帮你的结果，不过是让你<strong>以更快的速度、更低的成本走向倒闭</strong>。</li><li>只有当企业处于正确的、具备护城河的“稀缺生态位”时，AI 强大的杠杆效应才能真正爆发，帮企业获取高额的商业回报。</li></ul>
+<p><strong>说白了：组织适配与否，生态位赚钱与否，缺一个，AI 都容易白搭。</strong></p>
 
-    // ============ 星星贴纸 ============
-    const starChars = ['★', '✦', '✧', '⋆', '⭐'];
-    const starColors = ['#ffffff', '#ffcf3f', '#9fc2ff', '#ffe08a'];
-    const starsWrap = document.getElementById('stars');
-    const starCount = window.innerWidth < 600 ? 42 : 78;
-    for (let i = 0; i < starCount; i++) {
-      const s = document.createElement('span');
-      s.className = 'star';
-      s.textContent = starChars[Math.floor(Math.random() * starChars.length)];
-      s.style.left = (Math.random() * 100) + '%';
-      s.style.top = (Math.random() * 100) + '%';
-      s.style.fontSize = (9 + Math.random() * 16) + 'px';
-      s.style.color = starColors[Math.floor(Math.random() * starColors.length)];
-      s.style.setProperty('--d', (2.2 + Math.random() * 4) + 's');
-      s.style.animationDelay = (Math.random() * 5) + 's';
-      starsWrap.appendChild(s);
-    }
+<h2>二、破局之道：AI 原生的组织重构</h2>
+<p>既然传统的“工具 + 培训”模式走不通，那么真正能让 AI 发挥威力的组织，必须在四个核心维度完成重构：<strong>对齐、闭环、推进、检查</strong>。</p>
+<h3>第一步：对齐（Alignment）——让 AI 掌握全部事实</h3>
+<p>在传统企业里，最大的内耗之一就是“信息不对称”。老板和高管不知道一线在发生什么，跨部门之间对业务目标的理解参差不齐，打法各异。</p>
+<p>要想让 AI 发挥作用，第一步必须解决<strong>事实对齐</strong>的问题。</p>
+<ul><li><strong>传统方式</strong>：靠开会、写周报、领导逐层向下传达。这种传导链路长、信息失真严重。</li><li><strong>AI 原生方式</strong>：用 AI 统一对齐事实、打法、工作发现、任务分配、传导与检查。</li></ul>
+<p><strong>核心逻辑在于：只有让 AI 掌握全部事实，它才能在此基础上进行后续的复盘、沉淀与精准指挥。</strong>当企业的每一次客户沟通、每一行代码提交、每一笔财务支出、每一项市场反馈都实时流向统一的 AI 数据底座时，AI 就成为了整个组织唯一的、客观的“单一事实来源（Single Source of Truth）”。这时候，组织内部再也不会出现“我觉得”、“我认为”的扯皮，一切以 AI 对齐的全局事实为准。</p>
+<h3>第二步：闭环（Closed-Loop）——从“开环内耗”到“自我进化”</h3>
+<p>绝大多数传统公司在本质上都是<strong>开环系统</strong>。项目接单、执行、交付，然后就结束了。至于中间踩了什么坑、为什么亏钱、下一次怎么改进，往往流于口头的复盘会议，或者沉淀在某个人离职后就带走的脑子里。</p>
+<p>AI 带来的最大变革，在于它能帮企业把<strong>业务闭环</strong>真正建立起来。我们可以让 AI 扮演超级 PMO（项目管理办公室），构建双层闭环体系：</p>
+<figure class="fig"><div class="fig-scroll"><svg viewBox="0 0 760 600" role="img" aria-label="双层闭环：内层能力闭环，外层市场闭环" font-family="Noto Sans SC,Inter,sans-serif">
+<circle cx="380" cy="300" r="256" fill="none" stroke="#0f0f0e" stroke-width="2"/>
+<circle cx="380" cy="300" r="122" fill="#f9f6f1" stroke="#0f0f0e" stroke-width="2"/>
+<path d="M568.1 126.1L562.1 109.4L551.5 120.0Z" fill="#0f0f0e"/>
+<path d="M473.3 220.8L467.3 204.2L456.7 214.8Z" fill="#0f0f0e"/>
+<path d="M553.9 488.1L570.6 482.1L560.0 471.5Z" fill="#0f0f0e"/>
+<path d="M459.2 393.3L475.8 387.3L465.2 376.7Z" fill="#0f0f0e"/>
+<path d="M191.9 473.9L197.9 490.6L208.5 480.0Z" fill="#0f0f0e"/>
+<path d="M286.7 379.2L292.7 395.8L303.3 385.2Z" fill="#0f0f0e"/>
+<path d="M206.1 111.9L189.4 117.9L200.0 128.5Z" fill="#0f0f0e"/>
+<path d="M300.8 206.7L284.2 212.7L294.8 223.3Z" fill="#0f0f0e"/>
+<circle cx="380" cy="300" r="54" fill="#0f0f0e"/>
+<text x="380" y="296" text-anchor="middle" font-size="22" font-weight="900" fill="#fff" font-family="Archivo,Inter,sans-serif">AI</text>
+<text x="380" y="318" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">超级 PMO</text>
+<rect x="305.0" y="26.0" width="150" height="36" rx="18.0" fill="#ef5d44" stroke="#0f0f0e" stroke-width="2"/><text x="380.0" y="49.0" text-anchor="middle" font-size="14" font-weight="700" fill="#0f0f0e">市场与客户数据</text>
+<rect x="574.0" y="282.0" width="124" height="36" rx="18.0" fill="#ef5d44" stroke="#0f0f0e" stroke-width="2"/><text x="636.0" y="305.0" text-anchor="middle" font-size="14" font-weight="700" fill="#0f0f0e">AI 持续分析</text>
+<rect x="312.0" y="538.0" width="136" height="36" rx="18.0" fill="#ef5d44" stroke="#0f0f0e" stroke-width="2"/><text x="380.0" y="561.0" text-anchor="middle" font-size="14" font-weight="700" fill="#0f0f0e">判断战略站位</text>
+<rect x="56.0" y="282.0" width="136" height="36" rx="18.0" fill="#ef5d44" stroke="#0f0f0e" stroke-width="2"/><text x="124.0" y="305.0" text-anchor="middle" font-size="14" font-weight="700" fill="#0f0f0e">调整业务打法</text>
+<rect x="328.0" y="160.0" width="104" height="36" rx="18.0" fill="#9fd5f7" stroke="#0f0f0e" stroke-width="2"/><text x="380.0" y="183.0" text-anchor="middle" font-size="14" font-weight="700" fill="#0f0f0e">完成任务</text>
+<rect x="442.0" y="282.0" width="120" height="36" rx="18.0" fill="#9fd5f7" stroke="#0f0f0e" stroke-width="2"/><text x="502.0" y="305.0" text-anchor="middle" font-size="14" font-weight="700" fill="#0f0f0e">AI 自动复盘</text>
+<rect x="328.0" y="404.0" width="104" height="36" rx="18.0" fill="#9fd5f7" stroke="#0f0f0e" stroke-width="2"/><text x="380.0" y="427.0" text-anchor="middle" font-size="14" font-weight="700" fill="#0f0f0e">提炼 SOP</text>
+<rect x="203.0" y="282.0" width="110" height="36" rx="18.0" fill="#9fd5f7" stroke="#0f0f0e" stroke-width="2"/><text x="258.0" y="305.0" text-anchor="middle" font-size="14" font-weight="700" fill="#0f0f0e">沉淀进流程</text>
+<path d="M380 452V526" stroke="#0f0f0e" stroke-width="2"/>
+<path d="M374 454L380 444L386 454Z" fill="#0f0f0e"/><path d="M374 524L380 534L386 524Z" fill="#0f0f0e"/>
+<text x="394" y="494.0" font-size="13" font-weight="700" fill="#0f0f0e">相互驱动，沉淀经验</text>
+<rect x="16" y="16" width="16" height="16" rx="4" fill="#9fd5f7" stroke="#0f0f0e" stroke-width="1.5"/><text x="40" y="29" font-size="13.5" font-weight="700" fill="#0f0f0e">内层 · 能力闭环</text><text x="40" y="48" font-size="12" fill="#62615d">内部复盘，沉淀 SOP，培养能力</text>
+<rect x="560" y="16" width="16" height="16" rx="4" fill="#ef5d44" stroke="#0f0f0e" stroke-width="1.5"/><text x="584" y="29" font-size="13.5" font-weight="700" fill="#0f0f0e">外层 · 市场闭环</text><text x="584" y="48" font-size="12" fill="#62615d">看市场反馈，判断站位</text>
+</svg></div><figcaption>图 2 · 双层闭环：内层沉淀能力，外层校准站位，两者相互驱动</figcaption></figure>
+<ol><li><strong>内部能力闭环（培养能力）</strong>：让 AI 控制整个工作流程。项目完成后，AI 自动进行复盘，将成功经验或失败教训提炼成标准的 SOP（标准作业程序），并直接沉淀进下一轮的业务流程中。<strong>人为的闭环容易流于口头，无法真的实现；而 AI 可以自己总结经验并固化进系统，让公司越做越聪明。</strong></li><li><strong>外部市场闭环（判断站位）</strong>：通过对外部市场数据、客户流失率、竞品动态的持续分析，AI 能够快速协助管理层判断当前的业务打法和生态站位到底对不对。</li></ol>
+<p>有了这双层闭环，企业就不再是一个死板的机器，而是一个能够自我进化的有机体。</p>
+<h3>第三步：推进与传导（Workflow &amp; Flow）——从“人推事”到“事推人”</h3>
+<p>这是整个 AI 原生组织变革中最激进、也最具颠覆性的一环。</p>
+<p>在传统企业里，传导工作靠层层加码的管理者。老板推总监，总监推经理，经理催员工：“这个项目进展到哪了？今天能不能交？”这种模式不仅内耗极大，而且极度依赖人的责任心和精力。</p>
+<p>而对于 AI 来说，它在组织里扮演的角色应该是<strong>流水线工厂里的传送带</strong>。</p>
+<h4>1. 改变传导的形态：最好的传导，就是不要传导</h4>
+<p>不要再去搞什么“全员培训员工去用 Agent”，这种思路依然把员工当成操作工。正确的做法是：<strong>让 Agent 去指挥人做事，让 Agent 推动下一个 Agent 去完成工作流程。</strong></p>
+<p>具体落地时，可以设计这样一个架构：</p>
+<ul><li>围绕一个业务目标建立一个<strong>项目容器</strong>，并生成唯一的<strong>项目 ID</strong>。</li><li>AI 自动提取相关信息，编排工作流程，明确指出哪些环节需要机器全自动执行，哪些环节必须有“人”参与（在复杂的流程中，大部分基础工作由 Agent 在做）。</li><li>员工不再需要每天向领导汇报进度、催促上下游协同，而是退居幕后，<strong>观察全局仪表盘，专注于关键节点的决策</strong>。</li></ul>
+<h4>2. 从“人推事”到“事推人”</h4>
+<p>在这种新形态下，业务的流转不再依靠人的主观催促，而是靠系统流程驱动。因为整个工作流在 AI 的编排下是透明的，流程一旦在某个环节卡住，系统会自动暴露卡点，并直接触发对相关责任人的督促。</p>
+<p>这种模式的优势显而易见：<strong>整个组织的运转效率会呈指数级提升，再也没有人敢浑水摸鱼。</strong>但它也带来了一个不可忽视的挑战：当流程被高度自动化、标准化之后，人类员工的日常工作可能会变得高度重复和机械化，从而产生严重的“无聊感”。这也是未来组织设计中需要人文关怀和调节的重要课题。</p>
+<h3>第四步：检查（Inspection）——设计对抗性检查点</h3>
+<p>当大部分流程都交由 AI 和自动化工作流去推进时，一个新的风险随之产生：<strong>AI 自己检查自己时往往会偷懒、或者出现盲区。</strong>大模型天然具有“讨好人类”的倾向，或者在面对复杂逻辑时容易出现幻觉。</p>
+<p>因此，流程设计中最核心、最考验产品经理功力的一步，是<strong>检查点的设计</strong>。</p>
+<ol><li><strong>对抗性检查机制</strong>：不能让 AI 既当运动员又当裁判员。在关键的业务节点上，必须引入“对抗性检查”——例如让另一个独立的 Agent 或特定规则引擎去对前一个环节的产出进行严苛的质检和红蓝对抗，以保证流程的顺畅与合规。</li><li><strong>面向人类的友好设计</strong>：尽管大部分工作是 AI 在做，但最终的把关权和最终决策权依然在人手中。因此，检查点的呈现形态必须设计成<strong>最方便人类一眼看懂、快速抽查</strong>的形式。用全局仪表盘和高亮异常提示，让人类能够用最小的精力成本，完成最高效的监督。</li></ol>
 
-    // ============ 导航滚动状态 ============
-    const nav = document.getElementById('nav');
-    const bgPhoto = document.getElementById('bgPhoto');
-    const onScroll = () => {
-      const y = window.scrollY;
-      nav.classList.toggle('scrolled', y > 40);
-      bgPhoto.style.transform = 'translateY(' + (y * 0.12) + 'px)';
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+<h2>结语：AI 落地的终局是重做组织</h2>
+<p>回顾全文，我们可以用一句话来收尾：</p>
+<blockquote>AI 落地不是买工具加培训，而是重做组织：对齐事实，闭环反馈，推动流程，设好检查点。</blockquote>
+<p>在未来的商业竞争中，企业之间的差距将不再取决于谁买的 API 更贵、谁囤的算力更多，而取决于谁能率先完成组织底座的进化。</p>
+<p>让 AI 去当那条不知疲倦的传送带，负责事实对齐、双层闭环、流程推进和对抗检查；而人类则应该从繁琐的沟通、催办和重复劳动中解放出来，站上全局仪表盘，去做那些需要直觉、温度和战略远见的宏观决策。</p>
+<p>组织适配了，生态位对了，AI 的成效才会水到渠成。这，才是 B 端 AI 产品经理和企业决策者在今天真正需要去思考和构建的终局。</p>
+</template>
 
-    // ============ 移动端菜单 ============
-    const burger = document.getElementById('burger');
-    const navLinks = document.getElementById('navLinks');
-    burger.addEventListener('click', () => navLinks.classList.toggle('open'));
-    navLinks.querySelectorAll('a').forEach(a =>
-      a.addEventListener('click', () => navLinks.classList.remove('open'))
-    );
+<template id="tpl-sora-kling">
+<h2>引言：当“技术奇迹”撞上“商业现实”</h2>
+<p>在生成式 AI 的发展史上，2024 年初发布的 Sora 曾被视为颠覆影视行业的“技术核弹”。然而，仅仅两年多后的 2026 年 3 月，Sora 却黯然关停——据报道它每天亏损约 100 万美元，营收却远远撑不起算力成本，这场昂贵的实验最终因为无法跑通商业闭环而走向终结。</p>
+<p>与此形成鲜明对比的是，同期起步、背靠快手的<strong>可灵（Kling）</strong>不仅在 2026 年依然持续在线、完成近 30 亿美元融资、投后估值约 180 亿美元，更在真实业务场景中实现了商业化跑通。</p>
+<p>从 Sora 的退场到可灵的跑通，这场冰与火的变局为所有 AI 行业的从业者、产品经理和企业主敲响了警钟：<strong>在 AI 时代，技术跑分永远敌不过商业闭环，追求极致画质而不懂场景匹配，最终只会被市场淘汰。</strong></p>
 
-    // ============ 滚动出现动画 ============
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+<h2>一、背景复盘：一场“天价实验”与一条“生猛商业线”</h2>
+<figure class="fig"><div class="fig-scroll"><svg viewBox="0 0 820 330" role="img" aria-label="Sora 与可灵的生命周期对比" font-family="Noto Sans SC,Inter,sans-serif">
+<path d="M120.0 40V290" stroke="#e3e2dd" stroke-width="1"/>
+<text x="120.0" y="312.0" font-size="12" font-weight="700" fill="#62615d" text-anchor="middle">2024</text>
+<path d="M340.0 40V290" stroke="#e3e2dd" stroke-width="1"/>
+<text x="340.0" y="312.0" font-size="12" font-weight="700" fill="#62615d" text-anchor="middle">2025</text>
+<path d="M560.0 40V290" stroke="#e3e2dd" stroke-width="1"/>
+<text x="560.0" y="312.0" font-size="12" font-weight="700" fill="#62615d" text-anchor="middle">2026</text>
+<path d="M780.0 40V290" stroke="#e3e2dd" stroke-width="1"/>
+<text x="780.0" y="312.0" font-size="12" font-weight="700" fill="#62615d" text-anchor="middle">2027</text>
+<path d="M120 290H780.0" stroke="#0f0f0e" stroke-width="1.5"/>
+<text x="20.0" y="125.0" font-size="17" font-weight="900" fill="#0f0f0e" text-anchor="start">Sora</text>
+<rect x="138.3" y="111" width="458.3" height="18" rx="9" fill="#c9c8c2"/>
+<circle cx="138.3" cy="120" r="8" fill="#fff" stroke="#0f0f0e" stroke-width="2.5"/>
+<text x="138.3" y="82.0" font-size="12" font-weight="700" fill="#62615d" text-anchor="middle">2024.02</text>
+<text x="138.3" y="100.0" font-size="14" font-weight="700" fill="#0f0f0e" text-anchor="middle">惊艳亮相</text>
+<circle cx="486.7" cy="120" r="8" fill="#fff" stroke="#0f0f0e" stroke-width="2.5"/>
+<text x="486.7" y="82.0" font-size="12" font-weight="700" fill="#62615d" text-anchor="middle">2025.09</text>
+<text x="486.7" y="100.0" font-size="14" font-weight="700" fill="#0f0f0e" text-anchor="middle">Sora 2</text>
+<circle cx="596.7" cy="120" r="13" fill="#ef5d44"/><path d="M591.7 115l10 10M601.7 115l-10 10" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+<text x="596.7" y="82.0" font-size="12" font-weight="700" fill="#62615d" text-anchor="middle">2026.03</text>
+<text x="596.7" y="100.0" font-size="14" font-weight="900" fill="#ef5d44" text-anchor="middle">宣布关停</text>
+<text x="367.5" y="154.0" font-size="13" font-weight="500" fill="#62615d" text-anchor="middle">约 25 个月 · 成本高企，营收撑不起运营</text>
+<text x="20.0" y="235.0" font-size="17" font-weight="900" fill="#0f0f0e" text-anchor="start">可灵 Kling</text>
+<rect x="211.7" y="221" width="558.3" height="18" rx="9" fill="#9fd5f7" stroke="#0f0f0e" stroke-width="1.5"/>
+<path d="M766.0 216L784.0 230L766.0 244Z" fill="#0f0f0e"/>
+<circle cx="211.7" cy="230" r="8" fill="#fff" stroke="#0f0f0e" stroke-width="2.5"/>
+<text x="211.7" y="192.0" font-size="12" font-weight="700" fill="#62615d" text-anchor="middle">2024.06</text>
+<text x="211.7" y="210.0" font-size="14" font-weight="700" fill="#0f0f0e" text-anchor="middle">1.0 上线</text>
+<circle cx="670.0" cy="230" r="8" fill="#fff" stroke="#0f0f0e" stroke-width="2.5"/>
+<text x="670.0" y="192.0" font-size="12" font-weight="700" fill="#62615d" text-anchor="middle">2026.07</text>
+<text x="670.0" y="210.0" font-size="14" font-weight="700" fill="#0f0f0e" text-anchor="middle">高频更新 · 大额融资</text>
+<text x="450.0" y="264.0" font-size="13" font-weight="500" fill="#62615d" text-anchor="middle">2025 · 持续迭代，跑通商业化</text>
+</svg></div><figcaption>图 1 · 两条生命线：Sora 约 25 个月后关停，可灵持续迭代并跑通商业化</figcaption></figure>
+<h3>1. Sora 的短暂生命（2024.2 - 2026.3）</h3>
+<ul><li><strong>生命周期</strong>：从 2024 年 2 月惊艳亮相，到 2025 年 9 月迭代 Sora 2，再到 2026 年 3 月宣告关停，总计约 25 个月。</li><li><strong>财务困境</strong>：据报道，Sora 每天亏损约 100 万美元，营收却远不足以覆盖算力成本。极度不对称的投入产出比，让这项技术奇迹最终无法维持。</li></ul>
+<h3>2. 可灵的稳健跑通（2024.6 至今）</h3>
+<ul><li><strong>生命周期</strong>：2024 年 6 月推出 1.0 版本，历经 2025 年的持续迭代，到 2026 年 7 月依然保持高频更新与稳定运营。</li><li><strong>资本与市场认可</strong>：斩获近 30 亿美元融资，投后估值约 180 亿美元。它用真金白银证明了 AI 视频可以是一门好生意。</li></ul>
 
-    // ============ 技能条动画（经验条升级感） ============
-    const barObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const bar = entry.target;
-          const row = bar.closest('.skill-row');
-          const numEl = row ? row.querySelector('.skill-label b') : null;
-          bar.style.width = bar.dataset.w + '%';
-          // 涨满后：经验条闪光 + 数字闪烁 + 升级音效
-          setTimeout(() => {
-            if (row) row.querySelector('.bar').classList.add('full');
-            if (numEl) {
-              numEl.classList.add('flash');
-              setTimeout(() => numEl.classList.remove('flash'), 600);
-            }
-            playLevelUp();
-          }, 1250);
-          barObserver.unobserve(bar);
-        }
-      });
-    }, { threshold: 0.5 });
-    document.querySelectorAll('.bar i').forEach(bar => barObserver.observe(bar));
+<h2>二、可灵做对了什么：解构“跑通”背后的商业逻辑</h2>
+<p>为什么可灵能在残酷的竞争中活下来并且赚到钱？核心在于它从一开始就扎根于真实的商业生态，而不是活在实验室的画质参数里。</p>
+<h3>1. 依托母体生态，打通“分发—变现”正循环</h3>
+<p>可灵背后是快手庞大的内容与电商生态。</p>
+<ul><li><strong>路径</strong>：电商商家、短剧团队、自媒体创作者用可灵生成视频 → 发布到快手获取流量 → 赚到广告费、带货收益或付费收入 → 产生利润并<strong>愿意继续为可灵的高效工具付费</strong>。</li><li><strong>本质</strong>：可灵不只是一个生成工具，它是整个快手内容生态大循环中的“生产力发动机”。</li></ul>
+<figure class="fig"><div class="fig-scroll"><svg viewBox="0 0 760 470" role="img" aria-label="可灵的分发与变现正循环" font-family="Noto Sans SC,Inter,sans-serif">
+<circle cx="380" cy="240" r="160" fill="none" stroke="#0f0f0e" stroke-width="2"/>
+<path d="M500.9 134.6L494.3 116.4L482.6 128.0Z" fill="#0f0f0e"/>
+<path d="M485.4 360.9L503.6 354.3L492.0 342.6Z" fill="#0f0f0e"/>
+<path d="M259.1 345.4L265.7 363.6L277.4 352.0Z" fill="#0f0f0e"/>
+<path d="M274.6 119.1L256.4 125.7L268.0 137.4Z" fill="#0f0f0e"/>
+<circle cx="380" cy="240" r="66" fill="#0f0f0e"/>
+<text x="380.0" y="234.0" font-size="15" font-weight="900" fill="#fff" text-anchor="middle">快手内容生态</text>
+<text x="380.0" y="256.0" font-size="11.5" font-weight="500" fill="#d8d6cf" text-anchor="middle">可灵 = 生产力发动机</text>
+<rect x="292.0" y="51.0" width="176" height="58" rx="14" fill="#fcdd71" stroke="#0f0f0e" stroke-width="2"/>
+<text x="380.0" y="77.0" font-size="15" font-weight="900" fill="#0f0f0e" text-anchor="middle">用可灵生成视频</text>
+<text x="380.0" y="97.0" font-size="12" font-weight="500" fill="#0f0f0e" text-anchor="middle">电商 · 短剧 · 自媒体</text>
+<rect x="452.0" y="211.0" width="176" height="58" rx="14" fill="#9fd5f7" stroke="#0f0f0e" stroke-width="2"/>
+<text x="540.0" y="237.0" font-size="15" font-weight="900" fill="#0f0f0e" text-anchor="middle">发布到快手</text>
+<text x="540.0" y="257.0" font-size="12" font-weight="500" fill="#0f0f0e" text-anchor="middle">获取流量</text>
+<rect x="292.0" y="371.0" width="176" height="58" rx="14" fill="#fff" stroke="#0f0f0e" stroke-width="2"/>
+<text x="380.0" y="397.0" font-size="15" font-weight="900" fill="#0f0f0e" text-anchor="middle">广告 · 带货 · 付费</text>
+<text x="380.0" y="417.0" font-size="12" font-weight="500" fill="#0f0f0e" text-anchor="middle">赚到收入，产生利润</text>
+<rect x="132.0" y="211.0" width="176" height="58" rx="14" fill="#ef5d44" stroke="#0f0f0e" stroke-width="2"/>
+<text x="220.0" y="237.0" font-size="15" font-weight="900" fill="#0f0f0e" text-anchor="middle">继续为可灵付费</text>
+<text x="220.0" y="257.0" font-size="12" font-weight="500" fill="#0f0f0e" text-anchor="middle">高频订阅，形成复购</text>
+</svg></div><figcaption>图 2 · 分发—变现正循环：创作者赚到钱，才会持续为工具付费</figcaption></figure>
+<h3>2. 锚定专业创作者（P 端），锁死高频订阅</h3>
+<p>可灵没有盲目讨好追求新鲜感的 C 端大众，而是从一开始就把核心用户锁定在<strong>靠视频吃饭的专业人群</strong>——短剧编导、电商商家、资深剪辑师、广告投手。</p>
+<ul><li>这群人对工具的诉求不是“好玩”，而是“生产力”和“ROI”。只要能帮他们省下实实在在的人力成本、提高出片效率，他们就愿意为高频订阅买单。</li></ul>
+<h3>3. 深耕 B 端 API 与结果付费的交付模式</h3>
+<ul><li>针对企业级客户，可灵不仅仅提供标准软件，而是深入场景做 <strong>B 端 API（按量调用）+ 企业定制交付</strong>。</li><li><strong>商业精髓</strong>：把高昂的算力成本巧妙地摊进客户的“整体成片预算”里。客户关心的不是底层用了多少 Token 或算力，而是为最终的“商业结果”付费。</li></ul>
+<h3>4. 极致的商品化：“够用就行”的实用主义</h3>
+<p>可灵并没有一味追求毫无瑕疵的电影级画质，而是把<strong>可控性、生成速度和使用成本</strong>做到了极致。</p>
+<ul><li>画质“够用就行”，但速度快、成本低、天天能用、改起来方便。对于商业生产而言，高性价比和可控性永远排在炫技的前面。</li></ul>
 
-    // ============ 道具卡片：点击弹出像素道具 + 音效 ============
-    document.querySelectorAll('.cap-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const item = card.dataset.item || '⭐';
-        // 卡片弹跳
-        card.classList.remove('bounce');
-        void card.offsetWidth;
-        card.classList.add('bounce');
-        // 弹出道具
-        const pop = document.createElement('span');
-        pop.className = 'cap-item-pop';
-        pop.textContent = item;
-        card.appendChild(pop);
-        setTimeout(() => pop.remove(), 900);
-        playItem();
-      });
-    });
+<h2>三、Sora 的场景错配：为什么“技术巅峰”输给了“商业现实”</h2>
+<p>反观 Sora 的退场，本质上是一场典型的<strong>场景错配与商业化盲目</strong>。</p>
+<figure class="fig"><div class="fig-scroll"><svg viewBox="0 0 820 400" role="img" aria-label="可灵与 Sora 的商业化对比" font-family="Noto Sans SC,Inter,sans-serif">
+<rect x="196" y="8" width="300" height="46" rx="12" fill="#9fd5f7" stroke="#0f0f0e" stroke-width="2"/>
+<text x="346.0" y="37.0" font-size="17" font-weight="900" fill="#0f0f0e" text-anchor="middle">可灵 · 跑通</text>
+<rect x="508" y="8" width="300" height="46" rx="12" fill="#ef5d44" stroke="#0f0f0e" stroke-width="2"/>
+<text x="658.0" y="37.0" font-size="17" font-weight="900" fill="#0f0f0e" text-anchor="middle">Sora · 退场</text>
+<rect x="12" y="66" width="796" height="58" rx="12" fill="#f9f6f1"/>
+<text x="28.0" y="101.0" font-size="14" font-weight="900" fill="#0f0f0e" text-anchor="start">目标用户</text>
+<circle cx="214" cy="95" r="5" fill="#0f0f0e"/>
+<text x="228.0" y="100.0" font-size="14" font-weight="500" fill="#0f0f0e" text-anchor="start">靠视频吃饭的专业创作者</text>
+<circle cx="526" cy="95" r="5" fill="#ef5d44"/>
+<text x="540.0" y="100.0" font-size="14" font-weight="500" fill="#0f0f0e" text-anchor="start">追求惊艳，难以形成高频付费</text>
+<text x="28.0" y="165.0" font-size="14" font-weight="900" fill="#0f0f0e" text-anchor="start">产品取舍</text>
+<circle cx="214" cy="159" r="5" fill="#0f0f0e"/>
+<text x="228.0" y="164.0" font-size="14" font-weight="500" fill="#0f0f0e" text-anchor="start">可控、速度、成本优先，画质够用</text>
+<circle cx="526" cy="159" r="5" fill="#ef5d44"/>
+<text x="540.0" y="164.0" font-size="14" font-weight="500" fill="#0f0f0e" text-anchor="start">物理模拟、电影级画质优先</text>
+<rect x="12" y="194" width="796" height="58" rx="12" fill="#f9f6f1"/>
+<text x="28.0" y="229.0" font-size="14" font-weight="900" fill="#0f0f0e" text-anchor="start">商业模式</text>
+<circle cx="214" cy="223" r="5" fill="#0f0f0e"/>
+<text x="228.0" y="228.0" font-size="14" font-weight="500" fill="#0f0f0e" text-anchor="start">生态分发变现 + 结果付费</text>
+<circle cx="526" cy="223" r="5" fill="#ef5d44"/>
+<text x="540.0" y="228.0" font-size="14" font-weight="500" fill="#0f0f0e" text-anchor="start">缺少分发与变现闭环</text>
+<text x="28.0" y="293.0" font-size="14" font-weight="900" fill="#0f0f0e" text-anchor="start">B 端交付</text>
+<circle cx="214" cy="287" r="5" fill="#0f0f0e"/>
+<text x="228.0" y="292.0" font-size="14" font-weight="500" fill="#0f0f0e" text-anchor="start">按量 API + 企业定制交付</text>
+<circle cx="526" cy="287" r="5" fill="#ef5d44"/>
+<text x="540.0" y="292.0" font-size="14" font-weight="500" fill="#0f0f0e" text-anchor="start">稳定 API、成本控制、行业落地滞后</text>
+<rect x="12" y="322" width="796" height="58" rx="12" fill="#f9f6f1"/>
+<text x="28.0" y="357.0" font-size="14" font-weight="900" fill="#0f0f0e" text-anchor="start">结果</text>
+<circle cx="214" cy="351" r="5" fill="#0f0f0e"/>
+<text x="228.0" y="356.0" font-size="14" font-weight="500" fill="#0f0f0e" text-anchor="start">持续运营，完成大额融资</text>
+<circle cx="526" cy="351" r="5" fill="#ef5d44"/>
+<text x="540.0" y="356.0" font-size="14" font-weight="500" fill="#0f0f0e" text-anchor="start">2026 年 3 月宣布关停</text>
+</svg></div><figcaption>图 3 · 同一条赛道，两种选择：可灵与 Sora 的商业化对比</figcaption></figure>
+<h3>1. 追求极致画质，烧爆成本却无法反复付费</h3>
+<p>Sora 追求的是物理世界的完美模拟和电影级的极致画质。为了实现这一点，其背后付出了天文数字的算力代价。</p>
+<ul><li>然而，对于普通用户和绝大多数企业来说，这种“极致画质”带来了极高的生成门槛、缓慢的渲染速度和恐怖的成本。</li><li>它成了一个让人“惊叹一次，却用不起第二次”的玩具，<strong>根本无法解决“让人愿意高频、反复付费”的商业命题</strong>。</li></ul>
+<h3>2. 缺乏稳健的 B 端交付能力</h3>
+<p>Sora 在商业化基础设施（如稳定的 B 端 API、精细化的成本控制、面向特定垂直行业的工程落地）上严重滞后。空有惊艳的 Demo，却无法将其转化为企业客户开箱即用的生产力工具，最终只能因财务亏损而黯然退场。</p>
 
-    // ============ 问号方块：顶金币 + 计分 + 连击 ============
-    const stage = document.getElementById('stage');
-    const scoreEl = document.getElementById('score');
-    const mushroom = document.getElementById('mushroom');
-    let score = 0;
-    let combo = 0;
+<h2>四、给 B 端产品经理的深度建议</h2>
+<p>作为一名 B 端 AI 产品经理，从这场变局中我们需要汲取以下核心方法论：</p>
+<ol><li><strong>告别“唯画质 / 唯参数论”，拥抱“ROI 导向”</strong>：在 B 端，客户不为“震撼的特效”买单，只为“降本增效的账本”买单。产品设计时，要时刻计算客户的投入产出比（ROI），把算力成本压到客户能接受的商业阈值内。</li><li><strong>把产品做成“结果交付”而不是“工具转售”</strong>：不要只卖软件账号（Seat 计费），要深入业务链条。通过 API 或工作流整合，帮客户搞定从任务发起、中间生成到最终变现的“结果闭环”。</li><li><strong>死磕“可控性”与“稳定性”</strong>：AI 的不确定性是 B 端落地的最大天花板。相比于偶尔出彩的随机性，B 端客户更需要的是<strong>在特定约束（SOP、风格、时长、合规）下高度可控的稳定输出</strong>。</li></ol>
 
-    function floatText(text, xPct) {
-      const el = document.createElement('div');
-      el.className = 'float-score';
-      el.textContent = text;
-      el.style.left = xPct + '%';
-      el.style.bottom = '86px';
-      stage.appendChild(el);
-      setTimeout(() => el.remove(), 900);
-    }
-    function bumpScore() {
-      scoreEl.classList.remove('score-pop');
-      void scoreEl.offsetWidth; // 重启动画
-      scoreEl.classList.add('score-pop');
-      scoreEl.textContent = String(score).padStart(2, '0');
-    }
-    function spawnCoin(xPct) {
-      const coin = document.createElement('div');
-      coin.className = 'coin-pop';
-      coin.style.left = 'calc(' + xPct + '% - 12px)';
-      coin.style.bottom = '80px';
-      stage.appendChild(coin);
-      setTimeout(() => coin.remove(), 1000);
-    }
-    function shakeStage() {
-      stage.classList.remove('shake');
-      void stage.offsetWidth;
-      stage.classList.add('shake');
-    }
-    function hitBlock(q) {
-      if (q.classList.contains('used')) return;
-      q.classList.add('used');
-      const xPct = (q.offsetLeft + q.offsetWidth / 2) / stage.clientWidth * 100;
-      spawnCoin(xPct);
-      combo++;
-      const gained = combo >= 3 ? 5 : combo === 2 ? 3 : 1;
-      score += gained;
-      bumpScore();
-      floatText('+' + gained, xPct);
-      playCoin();
-      shakeStage();
-    }
-    document.querySelectorAll('.qblock').forEach(q => {
-      q.addEventListener('click', () => hitBlock(q));
-    });
+<h2>五、给企业主的破局指南</h2>
+<p>对于正在寻找 AI 落地路径的企业决策者而言，Sora 与可灵的成败给出了极具警示意义的指引：</p>
+<ol><li><strong>寻找你的“分发与变现闭环”</strong>：买 AI 工具前先问自己：这个工具生成的价值，最终能在公司的哪一个变现环节兑现？如果它只停留在内部自嗨或孤立的环节，无法接入商业闭环，果断停止投入。</li><li><strong>警惕“伪需求”与“炫技型项目”</strong>：不要为了赶时髦去搞一些看上去很美、但对核心利润毫无帮助的 AI 项目。把预算和精力投入到那些能直接帮核心业务提效、降本、甚至重构商业模式的场景中去。</li><li><strong>让 AI 融入现有的业务流，而不是要求业务去迁就 AI</strong>：参考可灵的成功路径，技术要服务于人、服务于生态。企业应当寻找那些自带生态位、能与现有业务形成正循环的 AI 解决方案，而不是盲目追求所谓的前沿大模型。</li></ol>
 
-    // ============ 小马里奥：移动（翻转）+ 跳跃 + 顶方块 + 吃蘑菇 ============
-    const mario = document.getElementById('mario');
-    let marioLeft = 14;   // 初始位置（百分比）
-    let dir = 1;          // 1 = 朝右，-1 = 朝左
-    let isBig = false;    // 是否已吃蘑菇变大
-    let jumping = false;
-    let jumpY = 0;
+<h2>结语</h2>
+<p>Sora 的关停不是 AI 视频的终点，而是狂热泡沫退潮、理性商业开端的标志。</p>
+<blockquote>技术决定了你能走多快，而商业闭环和场景适配才决定了你能走多远。</blockquote>
+<p>无论是产品经理还是企业主，唯有丢掉幻想、扎根业务、算清账本，才能在下一轮的 AI 浪潮中真正跑通终局。</p>
+</template>
 
-    function marioTransform() {
-      return 'translateY(' + jumpY + 'px) scaleX(' + dir + ') scale(' + (isBig ? 1.3 : 1) + ')';
-    }
-    function applyTransform() { mario.style.transform = marioTransform(); }
-    function marioCenterPct() { return marioLeft + (36 / 2) / stage.clientWidth * 100; }
+<template id="tpl-thinking">
+<p>在产品经理的日常工作中，我们常常陷入这样的困境：为什么用户明明说这个功能很好，上线后却无人问津？为什么我们精心设计的引导流程，用户看都不看直接关掉？为什么团队开会时，大家总会陷入“我觉得”的争论中无法自拔？</p>
+<p>很多时候，产品的底层逻辑不是代码，也不是 UI 交互，而是<strong>人类的心智模式（Mental Models）</strong>。</p>
+<p>诺贝尔经济学奖得主丹尼尔·卡尼曼（Daniel Kahneman）的经典著作《思考，快与慢》虽然是一本心理学与行为经济学巨著，但它几乎可以被视为产品经理的“底层操作系统说明书”。读懂这本书，能帮我们从更深的维度理解用户、看透决策、优化产品。</p>
 
-    function placeMario() {
-      const maxPct = Math.min(88, (stage.clientWidth - 40) / stage.clientWidth * 100);
-      marioLeft = Math.max(2, Math.min(maxPct, marioLeft));
-      mario.style.left = marioLeft + '%';
-    }
+<h2>一、理解系统 1 与系统 2：用户的“懒惰”与产品的“直觉”</h2>
+<p>卡尼曼在书中指出，人类的大脑由两个系统驱动：</p>
+<ul><li><strong>系统 1（快思考）</strong>：无意识、直觉化、极快、耗能低。它负责日常的本能反应，比如看到红灯就踩刹车、扫一眼页面就决定关掉。</li><li><strong>系统 2（慢思考）</strong>：有意识、理性、逻辑化、极慢、极度消耗能量。它负责复杂的计算和深思熟虑。</li></ul>
+<figure class="fig"><div class="fig-scroll"><svg viewBox="0 0 820 400" role="img" aria-label="系统 1 与系统 2，以及产品经理如何隐藏复杂度" font-family="Noto Sans SC,Inter,sans-serif">
+<rect x="20" y="10" width="380" height="240" rx="18" fill="#fcdd71" stroke="#0f0f0e" stroke-width="2" />
+<text x="42.0" y="52.0" font-size="22" font-weight="900" fill="#0f0f0e" text-anchor="start">系统 1 · 快思考</text>
+<rect x="42" y="72" width="65" height="30" rx="15" fill="#fff" stroke="#0f0f0e" stroke-width="1.5" />
+<text x="74.5" y="92.0" font-size="13" font-weight="700" fill="#0f0f0e" text-anchor="middle">无意识</text>
+<rect x="115" y="72" width="65" height="30" rx="15" fill="#fff" stroke="#0f0f0e" stroke-width="1.5" />
+<text x="147.5" y="92.0" font-size="13" font-weight="700" fill="#0f0f0e" text-anchor="middle">直觉化</text>
+<rect x="188" y="72" width="52" height="30" rx="15" fill="#fff" stroke="#0f0f0e" stroke-width="1.5" />
+<text x="214.0" y="92.0" font-size="13" font-weight="700" fill="#0f0f0e" text-anchor="middle">极快</text>
+<rect x="248" y="72" width="65" height="30" rx="15" fill="#fff" stroke="#0f0f0e" stroke-width="1.5" />
+<text x="280.5" y="92.0" font-size="13" font-weight="700" fill="#0f0f0e" text-anchor="middle">耗能低</text>
+<text x="42.0" y="150.0" font-size="14" font-weight="500" fill="#0f0f0e" text-anchor="start">例：看到红灯踩刹车，扫一眼页面就关掉</text>
+<path d="M42 182H378" stroke="#0f0f0e" stroke-width="1" stroke-dasharray="3 4" opacity=".5"/>
+<circle cx="50" cy="214" r="6" fill="#0f0f0e"/>
+<text x="64.0" y="219.0" font-size="15" font-weight="900" fill="#0f0f0e" text-anchor="start">用户大多处在这个状态</text>
+<rect x="420" y="10" width="380" height="240" rx="18" fill="#9fd5f7" stroke="#0f0f0e" stroke-width="2" />
+<text x="442.0" y="52.0" font-size="22" font-weight="900" fill="#0f0f0e" text-anchor="start">系统 2 · 慢思考</text>
+<rect x="442" y="72" width="65" height="30" rx="15" fill="#fff" stroke="#0f0f0e" stroke-width="1.5" />
+<text x="474.5" y="92.0" font-size="13" font-weight="700" fill="#0f0f0e" text-anchor="middle">有意识</text>
+<rect x="515" y="72" width="52" height="30" rx="15" fill="#fff" stroke="#0f0f0e" stroke-width="1.5" />
+<text x="541.0" y="92.0" font-size="13" font-weight="700" fill="#0f0f0e" text-anchor="middle">理性</text>
+<rect x="575" y="72" width="52" height="30" rx="15" fill="#fff" stroke="#0f0f0e" stroke-width="1.5" />
+<text x="601.0" y="92.0" font-size="13" font-weight="700" fill="#0f0f0e" text-anchor="middle">极慢</text>
+<rect x="635" y="72" width="65" height="30" rx="15" fill="#fff" stroke="#0f0f0e" stroke-width="1.5" />
+<text x="667.5" y="92.0" font-size="13" font-weight="700" fill="#0f0f0e" text-anchor="middle">耗能高</text>
+<text x="442.0" y="150.0" font-size="14" font-weight="500" fill="#0f0f0e" text-anchor="start">例：复杂计算、深思熟虑</text>
+<path d="M442 182H778" stroke="#0f0f0e" stroke-width="1" stroke-dasharray="3 4" opacity=".5"/>
+<circle cx="450" cy="214" r="6" fill="#ef5d44"/>
+<text x="464.0" y="219.0" font-size="15" font-weight="900" fill="#ef5d44" text-anchor="start">被强行唤醒 → 跳出率飙升</text>
+<rect x="20" y="290" width="340" height="92" rx="18" fill="#0f0f0e" stroke="#0f0f0e" stroke-width="0" />
+<text x="190.0" y="328.0" font-size="16" font-weight="900" fill="#fff" text-anchor="middle">产品经理：系统 2 的前期投入</text>
+<text x="190.0" y="354.0" font-size="13" font-weight="500" fill="#d8d6cf" text-anchor="middle">架构设计 · 交互精简</text>
+<path d="M372 336H440" stroke="#0f0f0e" stroke-width="2.5"/><path d="M436 328L450 336L436 344Z" fill="#0f0f0e"/>
+<text x="411.0" y="322.0" font-size="12" font-weight="700" fill="#62615d" text-anchor="middle">换取</text>
+<rect x="460" y="290" width="340" height="92" rx="18" fill="#fcdd71" stroke="#0f0f0e" stroke-width="2" />
+<text x="630.0" y="328.0" font-size="16" font-weight="900" fill="#0f0f0e" text-anchor="middle">用户：系统 1 顺畅操作</text>
+<text x="630.0" y="354.0" font-size="13" font-weight="500" fill="#0f0f0e" text-anchor="middle">不用想就能用</text>
+</svg></div><figcaption>图 1 · 系统 1 与系统 2：产品经理用自己的“慢思考”，换用户的“快思考”</figcaption></figure>
+<h3>对产品经理的启发</h3>
+<ol><li><strong>不要试图挑战用户的系统 2</strong>：绝大多数用户在打开 App 或浏览网站时，都处于“系统 1”的怠速运转状态。他们是懒惰的、缺乏耐心的。如果你设计了一个需要用户费脑子去理解、去计算、去寻找入口的复杂界面，等于强行唤醒他们的系统 2，结果必然是<strong>用户流失（跳出率飙升）</strong>。</li><li><strong>极致的流畅就是隐藏复杂度</strong>：优秀的产品设计，本质上是用系统 2 的前期高额投入（架构设计、交互精简），换取用户用系统 1 就能“无脑顺畅操作”的体验。让用户“不用想就能用”，是产品经理的最高修养。</li></ol>
 
-    function jump() {
-      if (jumping) return;
-      jumping = true;
-      playJump();
-      jumpY = -48;
-      applyTransform();
-      setTimeout(() => { jumpY = 0; applyTransform(); jumping = false; }, 430);
-    }
+<h2>二、认知偏误（Cognitive Biases）：如何看穿用户的“谎言”</h2>
+<p>在做用户调研或数据分析时，我们经常会被表象欺骗。卡尼曼在书中盘点的各种认知偏误，是产品经理剖析用户真实心理的利器：</p>
+<figure class="fig"><div class="fig-scroll"><svg viewBox="0 0 820 360" role="img" aria-label="损失厌恶、可得性启发、框架效应在产品中的应用" font-family="Noto Sans SC,Inter,sans-serif">
+<rect x="20" y="10" width="250" height="340" rx="18" fill="#fff" stroke="#0f0f0e" stroke-width="1.5" />
+<text x="40.0" y="44.0" font-size="19" font-weight="900" fill="#0f0f0e" text-anchor="start">损失厌恶</text>
+<text x="40.0" y="64.0" font-size="12" font-weight="600" fill="#62615d" text-anchor="start">Loss Aversion</text>
+<path d="M40 300H250" stroke="#0f0f0e" stroke-width="1" opacity=".15"/>
+<rect x="285" y="10" width="250" height="340" rx="18" fill="#fff" stroke="#0f0f0e" stroke-width="1.5" />
+<text x="305.0" y="44.0" font-size="19" font-weight="900" fill="#0f0f0e" text-anchor="start">可得性启发</text>
+<text x="305.0" y="64.0" font-size="12" font-weight="600" fill="#62615d" text-anchor="start">Availability Heuristic</text>
+<path d="M305 300H515" stroke="#0f0f0e" stroke-width="1" opacity=".15"/>
+<rect x="550" y="10" width="250" height="340" rx="18" fill="#fff" stroke="#0f0f0e" stroke-width="1.5" />
+<text x="570.0" y="44.0" font-size="19" font-weight="900" fill="#0f0f0e" text-anchor="start">框架效应</text>
+<text x="570.0" y="64.0" font-size="12" font-weight="600" fill="#62615d" text-anchor="start">Framing Effect</text>
+<path d="M570 300H780" stroke="#0f0f0e" stroke-width="1" opacity=".15"/>
+<path d="M50 262H240" stroke="#0f0f0e" stroke-width="1.5"/>
+<rect x="70" y="206" width="56" height="56" rx="6" fill="#c9c8c2" stroke="#0f0f0e" stroke-width="0" />
+<rect x="150" y="122.0" width="56" height="28.0" rx="6" fill="#f7b3a6" stroke="#0f0f0e" stroke-width="0" stroke-dasharray="4 3"/>
+<rect x="150" y="150" width="56" height="112" rx="6" fill="#ef5d44" stroke="#0f0f0e" stroke-width="0" />
+<text x="98.0" y="198.0" font-size="13" font-weight="900" fill="#0f0f0e" text-anchor="middle">1×</text>
+<text x="178.0" y="114.0" font-size="13" font-weight="900" fill="#0f0f0e" text-anchor="middle">2–2.5×</text>
+<text x="98.0" y="282.0" font-size="13" font-weight="700" fill="#62615d" text-anchor="middle">得到</text>
+<text x="178.0" y="282.0" font-size="13" font-weight="700" fill="#62615d" text-anchor="middle">失去</text>
+<text x="145.0" y="328.0" font-size="12.5" font-weight="700" fill="#0f0f0e" text-anchor="middle">“即将失效”比“立享优惠”更促转化</text>
+<rect x="310" y="98" width="200" height="48" rx="24" fill="#f9f6f1" stroke="#0f0f0e" stroke-width="1.5" />
+<text x="410.0" y="128.0" font-size="15" font-weight="700" fill="#0f0f0e" text-anchor="middle">万一退款很麻烦？</text>
+<circle cx="370" cy="158" r="6" fill="#f9f6f1" stroke="#0f0f0e" stroke-width="1.5"/><circle cx="356" cy="172" r="4" fill="#f9f6f1" stroke="#0f0f0e" stroke-width="1.5"/>
+<text x="480.0" y="180.0" font-size="12" font-weight="700" fill="#62615d" text-anchor="middle">对冲</text>
+<path d="M410 186V202" stroke="#0f0f0e" stroke-width="2"/><path d="M404 200L410 210L416 200Z" fill="#0f0f0e"/>
+<rect x="310" y="214" width="200" height="52" rx="26" fill="#fcdd71" stroke="#0f0f0e" stroke-width="2" />
+<text x="410.0" y="246.0" font-size="15" font-weight="900" fill="#0f0f0e" text-anchor="middle">极速退款 · 退款保障</text>
+<text x="410.0" y="328.0" font-size="12.5" font-weight="700" fill="#0f0f0e" text-anchor="middle">用安全感文案对冲脑中的极端案例</text>
+<rect x="580" y="96" width="190" height="48" rx="12" fill="#efeee9" stroke="#0f0f0e" stroke-width="1.5" />
+<text x="675.0" y="126.0" font-size="16" font-weight="700" fill="#62615d" text-anchor="middle">年费 1095 元</text>
+<text x="675.0" y="182.0" font-size="26" font-weight="900" fill="#0f0f0e" text-anchor="middle">=</text>
+<rect x="580" y="206" width="190" height="56" rx="12" fill="#ef5d44" stroke="#0f0f0e" stroke-width="2" />
+<text x="675.0" y="232.0" font-size="17" font-weight="900" fill="#0f0f0e" text-anchor="middle">每天只需 3 元</text>
+<text x="675.0" y="252.0" font-size="11.5" font-weight="600" fill="#0f0f0e" text-anchor="middle">约合一杯咖啡钱</text>
+<text x="675.0" y="328.0" font-size="12.5" font-weight="700" fill="#0f0f0e" text-anchor="middle">同样的事实，换个说法，门槛不同</text>
+</svg></div><figcaption>图 2 · 三种常见认知偏误，以及它们在产品里的用法</figcaption></figure>
+<h3>1. 损失厌恶（Loss Aversion）</h3>
+<ul><li><strong>原理</strong>：人们对“失去”的痛苦感受，远大于对“得到”的快乐感受（通常是 2 到 2.5 倍）。</li><li><strong>产品应用</strong>：在做增长或会员体系时，“限时免费体验”或“为你保留 3 天特权，过期即将失效”的文案与策略，远比“现在购买立享优惠”更能刺激转化。因为用户对“失去特权”的恐惧，大过获得优惠的喜悦。</li></ul>
+<h3>2. 可得性启发（Availability Heuristic）</h3>
+<ul><li><strong>原理</strong>：人们根据脑海中容易想起来的鲜明例子来判断事情发生的概率，而不是根据客观统计数据。</li><li><strong>产品应用</strong>：为什么电商 App 的退款保障、大字标出的“极速退款”能大大提升转化率？因为用户在下单瞬间，大脑系统 1 会立刻联想到“万一买到烂货退款会不会很麻烦”的极端痛苦案例。用极具安全感的文案瞬间对冲这种心理，才能促成交易。</li></ul>
+<h3>3. 框架效应（Framing Effect）</h3>
+<ul><li><strong>原理</strong>：同样的客观事实，用不同的方式表达，会引导出完全截然不同的决策。</li><li><strong>产品应用</strong>：在 SaaS 或 B 端产品定价中，把“每天只需 3 元（约合一杯咖啡钱）”写在显眼位置，比直接写“年费 1095 元”更能降低企业的心理决策门槛。</li></ul>
 
-    function move(dirChange) {
-      if (dirChange < 0) dir = -1;
-      else if (dirChange > 0) dir = 1;
-      applyTransform();
-      marioLeft += dirChange * 3.2;
-      placeMario();
-      checkPickups();
-    }
+<h2>三、决策机制：治愈团队的“规划谬误”与乐观偏见</h2>
+<p>除了理解用户，《思考，快与慢》对产品经理自身的<strong>项目管理与理性决策</strong>同样具有颠覆性指导意义。</p>
+<figure class="fig"><div class="fig-scroll"><svg viewBox="0 0 820 340" role="img" aria-label="用外部视角对抗规划谬误，用盲投对抗锚定效应" font-family="Noto Sans SC,Inter,sans-serif">
+<rect x="20" y="10" width="380" height="320" rx="18" fill="#f9f6f1" stroke="#0f0f0e" stroke-width="1.5" />
+<rect x="420" y="10" width="380" height="320" rx="18" fill="#f9f6f1" stroke="#0f0f0e" stroke-width="1.5" />
+<text x="42.0" y="48.0" font-size="19" font-weight="900" fill="#0f0f0e" text-anchor="start">规划谬误 → 外部视角</text>
+<text x="442.0" y="48.0" font-size="19" font-weight="900" fill="#0f0f0e" text-anchor="start">锚定效应 → 先盲投，再讨论</text>
+<text x="42.0" y="106.0" font-size="13" font-weight="700" fill="#62615d" text-anchor="start">内部视角</text>
+<rect x="118" y="88" width="130" height="28" rx="8" fill="#c9c8c2" stroke="#0f0f0e" stroke-width="0" />
+<text x="183.0" y="107.0" font-size="12" font-weight="700" fill="#0f0f0e" text-anchor="middle">乐观排期</text>
+<text x="42.0" y="166.0" font-size="13" font-weight="700" fill="#62615d" text-anchor="start">外部视角</text>
+<rect x="118" y="148" width="256" height="28" rx="8" fill="#ef5d44" stroke="#0f0f0e" stroke-width="0" />
+<text x="246.0" y="167.0" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">同类项目实际耗时</text>
+<path d="M248 84V184" stroke="#0f0f0e" stroke-width="1.5" stroke-dasharray="3 3"/>
+<path d="M250 200H372M250 194V206M372 194V206" stroke="#0f0f0e" stroke-width="1.5"/>
+<text x="311.0" y="222.0" font-size="12" font-weight="700" fill="#0f0f0e" text-anchor="middle">常见的延期</text>
+<rect x="42" y="250" width="336" height="56" rx="14" fill="#fff" stroke="#0f0f0e" stroke-width="1.5" />
+<text x="210.0" y="273.0" font-size="13.5" font-weight="700" fill="#0f0f0e" text-anchor="middle">以同类历史项目的均值</text>
+<text x="210.0" y="294.0" font-size="13.5" font-weight="700" fill="#0f0f0e" text-anchor="middle">作为排期锚点</text>
+<rect x="450" y="74" width="320" height="40" rx="20" fill="#fcdd71" stroke="#0f0f0e" stroke-width="2" />
+<circle cx="472" cy="94" r="12" fill="#0f0f0e"/>
+<text x="472.0" y="99.0" font-size="13" font-weight="900" fill="#fff" text-anchor="middle">1</text>
+<text x="496.0" y="100.0" font-size="15" font-weight="700" fill="#0f0f0e" text-anchor="start">团队无记名盲投</text>
+<path d="M610 116V130" stroke="#0f0f0e" stroke-width="2"/><path d="M604 127L610 135L616 127Z" fill="#0f0f0e"/>
+<rect x="450" y="136" width="320" height="40" rx="20" fill="#fff" stroke="#0f0f0e" stroke-width="2" />
+<circle cx="472" cy="156" r="12" fill="#0f0f0e"/>
+<text x="472.0" y="161.0" font-size="13" font-weight="900" fill="#fff" text-anchor="middle">2</text>
+<text x="496.0" y="162.0" font-size="15" font-weight="700" fill="#0f0f0e" text-anchor="start">汇总，展示分布</text>
+<path d="M610 178V192" stroke="#0f0f0e" stroke-width="2"/><path d="M604 189L610 197L616 189Z" fill="#0f0f0e"/>
+<rect x="450" y="198" width="320" height="40" rx="20" fill="#fff" stroke="#0f0f0e" stroke-width="2" />
+<circle cx="472" cy="218" r="12" fill="#0f0f0e"/>
+<text x="472.0" y="223.0" font-size="13" font-weight="900" fill="#fff" text-anchor="middle">3</text>
+<text x="496.0" y="224.0" font-size="15" font-weight="700" fill="#0f0f0e" text-anchor="start">基于分布讨论</text>
+<path d="M610 240V254" stroke="#0f0f0e" stroke-width="2"/><path d="M604 251L610 259L616 251Z" fill="#0f0f0e"/>
+<rect x="450" y="260" width="320" height="40" rx="20" fill="#0f0f0e" stroke="#0f0f0e" stroke-width="2" />
+<circle cx="472" cy="280" r="12" fill="#fff"/>
+<text x="472.0" y="285.0" font-size="13" font-weight="900" fill="#0f0f0e" text-anchor="middle">4</text>
+<text x="496.0" y="286.0" font-size="15" font-weight="700" fill="#fff" text-anchor="start">负责人最后发言</text>
+</svg></div><figcaption>图 3 · 团队决策的两个解法：用外部视角做排期，用盲投防止被锚定</figcaption></figure>
+<h3>1. 规划谬误（Planning Fallacy）</h3>
+<ul><li><strong>现象</strong>：产品团队在做排期（Roadmap）时，总会陷入极度乐观的倾向，认为一切会按理想状态推进，结果导致项目频繁延期。</li><li><strong>破局方法</strong>：引入卡尼曼提到的<strong>“外部视角（Outside View）”</strong>。不要盲目沉浸在本项目独特的乐观细节里，而是去看同类历史项目平均延期了多久、业内基准数据是多少，然后把这个“行业惨淡均值”作为排期的锚点。</li></ul>
+<h3>2. 锚定效应（Anchoring Effect）</h3>
+<ul><li><strong>现象</strong>：在做需求评审、优先级排序或估算成本时，最先抛出的数字或方案往往会成为无形的锚，把大家的讨论方向死死绑架。</li><li><strong>破局方法</strong>：作为产品负责人，在引导跨部门讨论或头脑风暴时，应该最后发言或先让团队进行“无记名盲投”，以防被前期某个高管或资深专家的无心之言（锚）带偏。</li></ul>
 
-    function checkPickups() {
-      // 顶方块：跳跃中且位于方块下方
-      document.querySelectorAll('.qblock').forEach(q => {
-        if (q.classList.contains('used')) return;
-        const qCenter = (q.offsetLeft + q.offsetWidth / 2) / stage.clientWidth * 100;
-        if (jumping && jumpY < -20 && Math.abs(marioCenterPct() - qCenter) < 8) {
-          hitBlock(q);
-        }
-      });
-      // 吃蘑菇：马里奥碰到蘑菇
-      if (!mushroom.classList.contains('eaten')) {
-        const mCenter = 20 + 22 / stage.clientWidth * 100;
-        if (Math.abs(marioCenterPct() - mCenter) < 8) {
-          eatMushroom();
-        }
-      }
-    }
+<h2>结语：产品经理的修行，是与人类本能的对话</h2>
+<p>《思考，快与慢》告诉我们，人类的大脑并不是一台纯粹理性的超级计算机，而是一套充满捷径、偏误、情绪化但又极其高效的进化产物。</p>
+<p>作为一名优秀的（无论是 B 端还是 C 端）产品经理，我们的价值不在于强迫用户变得理性，而在于<strong>顺应人类大脑的天性，在认知盲区中搭建桥梁，在系统 1 的直觉与系统 2 的理性之间，设计出真正符合人性、顺应商业规律的产品。</strong></p>
+<p>把这本书放在案头，每次当你在纠结交互细节、打磨用户路径、或者跟团队推演产品规划时，不妨问自己一句：</p>
+<blockquote>此时此刻，用户的系统 1 正在想什么？</blockquote>
+</template>
 
-    function eatMushroom() {
-      mushroom.classList.add('eaten');
-      isBig = true;
-      applyTransform();
-      playPowerup();
-      score += 10;
-      bumpScore();
-      floatText('+10', 20 + 22 / stage.clientWidth * 100);
+<div class="reader" id="reader" hidden>
+  <div class="shell">
+    <button class="copy" id="back" type="button" style="background:var(--ink);color:var(--white)">← 返回</button>
+    <h1 id="r-title"></h1>
+    <p class="meta" id="r-meta"></p>
+    <article id="r-body"></article>
+  </div>
+</div>
 
-      // 专属动画 1：POWER UP 文字
-      const pup = document.createElement('div');
-      pup.className = 'powerup-text';
-      pup.textContent = 'POWER UP!';
-      pup.style.left = marioCenterPct() + '%';
-      pup.style.bottom = '120px';
-      stage.appendChild(pup);
-      setTimeout(() => pup.remove(), 1100);
+<script>
+/* ---------- 拼贴：根据简历项目绘制的界面 ---------- */
+const M={
+copilot:`<div class="mock"><div class="bar"><i></i><i></i><i></i><span>排障 Copilot</span></div>
+<div class="msg u">耳机连上手机后没有声音</div>
+<div class="msg a"><span class="ok">推荐话术</span><ol><li>确认音频输出已切到耳机</li><li>重置蓝牙配对</li><li>检查固件版本 ≥ 2.1</li></ol></div>
+<div class="src">来源：产品说明书 第 12 页</div>
+<div class="inp">采纳并发送<b></b></div></div>`,
+doc:`<div class="mock m-doc"><div class="doc-h">PRD · 数码排障 Copilot</div>
+<div class="doc-v">v1.0 <em>已立项</em></div>
+<h5>1. 背景</h5><div class="lns"><i style="width:100%"></i><i style="width:82%"></i></div>
+<h5>2. 目标指标</h5>
+<table class="tbl"><tr><td>话术采纳率</td><td>75%</td></tr><tr><td>误答率</td><td>−40%</td></tr><tr><td>培训周期</td><td>3 周 → 3 天</td></tr></table></div>`,
+prompt:`<div class="mock m-prompt"><div class="bar"><i></i><i></i><i></i><span>prompt_layers.md</span></div>
+<pre><span class="c"># L1 平台通用服务层</span>
+语气、合规、转人工规则
+<span class="c"># L2 3C 类目层</span>
+<span class="k">耳机</span> · <span class="k">充电</span> · <span class="k">车载</span>
+<span class="c"># L3 产品型号层</span>
+参数表、固件版本、
+<span class="s">排障步骤</span></pre></div>`,
+dash:`<div class="mock m-dash"><span class="lab">RAG 改造前后</span>
+<div class="kpi">71%<small>+16pt</small></div>
+<span class="lab">机器人问题解决率 · 检索召回率</span>
+<svg viewBox="0 0 200 116"><g stroke="#e3e2dd" stroke-width="1"><line x1="0" y1="10" x2="200" y2="10"/><line x1="0" y1="50" x2="200" y2="50"/><line x1="0" y1="90" x2="200" y2="90"/></g>
+<rect x="12" y="46" width="34" height="44" rx="4" fill="#bdbcb6"/><rect x="52" y="33.2" width="34" height="56.8" rx="4" fill="#ef5d44"/>
+<rect x="114" y="34" width="34" height="56" rx="4" fill="#bdbcb6"/><rect x="154" y="20.4" width="34" height="69.6" rx="4" fill="#151515"/>
+<g font-family="Inter,sans-serif" font-size="10" text-anchor="middle" font-weight="700" fill="#151515"><text x="29" y="42">55</text><text x="69" y="29">71</text><text x="131" y="30">70</text><text x="171" y="16">87</text></g>
+<g fill="#62615d" font-size="9.5" font-family="Noto Sans SC,Inter,sans-serif" text-anchor="middle"><text x="49" y="104">解决率</text><text x="151" y="104">召回率</text></g></svg></div>`,
+flow:`<div class="mock m-flow"><span class="lab" style="font-size:4.6cqw;color:#62615d">混合路由</span>
+<svg viewBox="0 0 200 230" font-family="Noto Sans SC,Inter,sans-serif" font-size="12">
+<rect x="40" y="4" width="120" height="30" rx="15" fill="#151515"/><text x="100" y="24" fill="#fff" text-anchor="middle">用户问题</text>
+<path d="M100 34v14" stroke="#151515" stroke-width="1.5"/><path d="M96 46l4 5 4-5z" fill="#151515"/>
+<rect x="40" y="52" width="120" height="30" rx="8" fill="#fff" stroke="#151515" stroke-width="1.5"/><text x="100" y="72" text-anchor="middle" fill="#151515">意图 + 置信度</text>
+<path d="M100 82v12M34 94h132M34 94v14M100 94v14M166 94v14" fill="none" stroke="#151515" stroke-width="1.5"/>
+<g fill="#151515"><path d="M30 106l4 5 4-5zM96 106l4 5 4-5zM162 106l4 5 4-5z"/></g>
+<rect x="4" y="112" width="60" height="64" rx="8" fill="#fcdd71" stroke="#151515" stroke-width="1.5"/>
+<text x="34" y="138" text-anchor="middle" fill="#151515" font-size="11">高置信</text><text x="34" y="156" text-anchor="middle" fill="#151515" font-size="11" font-weight="700">FAQ 直答</text>
+<rect x="70" y="112" width="60" height="64" rx="8" fill="#9fd5f7" stroke="#151515" stroke-width="1.5"/>
+<text x="100" y="138" text-anchor="middle" fill="#151515" font-size="11">长尾问题</text><text x="100" y="156" text-anchor="middle" fill="#151515" font-size="11" font-weight="700">检索生成</text>
+<rect x="136" y="112" width="60" height="64" rx="8" fill="#ef5d44" stroke="#151515" stroke-width="1.5"/>
+<text x="166" y="138" text-anchor="middle" fill="#fff" font-size="11">敏感/低置信</text><text x="166" y="156" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">转人工</text>
+<rect x="4" y="190" width="192" height="34" rx="17" fill="none" stroke="#151515" stroke-width="1.5" stroke-dasharray="4 4"/>
+<text x="100" y="212" text-anchor="middle" fill="#151515" font-size="11">答案溯源 · 拒答策略</text>
+</svg></div>`,
+evals:`<div class="mock m-kanban"><div class="bar"><span style="margin:0">离线评测集 · 800 条</span></div>
+<div class="ev"><div class="ev-h"><span>用例</span><span>准确</span><span>完整</span><span>引用</span><span>拒答</span></div>
+<div class="ev-r"><span>报销制度</span><i class="y"></i><i class="y"></i><i class="y"></i><i class="y"></i></div>
+<div class="ev-r"><span>授信流程</span><i class="y"></i><i class="n"></i><i class="y"></i><i class="y"></i></div>
+<div class="ev-r"><span>合同条款</span><i class="y"></i><i class="y"></i><i class="n"></i><i class="y"></i></div>
+<div class="ev-r"><span>敏感问题</span><i class="y"></i><i class="y"></i><i class="y"></i><i class="y"></i></div>
+<div class="ev-r"><span>数据口径</span><i class="n"></i><i class="y"></i><i class="y"></i><i class="y"></i></div></div>
+<div class="ev-f">按版本回归 · 逐条人工标注</div></div>`
+};
+const KW={
+r1:['red','Discover','流程拆解'],y1:['yellow','Assist','Copilot',1],b1:['blue','Retrieve','RAG',1],
+d1:['dark','Evaluate','评测集'],c1:['cream','Route','意图识别'],r2:['red','Layered','Prompt',1],
+y2:['yellow','Knowledge','知识库'],b2:['blue','Monitor','数据看板'],d2:['dark','Hand-off','转人工兜底']
+};
+const cols=[
+ {cls:'c1',items:['r1','copilot','evals','b1','d2']},
+ {cls:'c2 up',items:['y1','dash','d1','prompt','r2']},
+ {cls:'c3',items:['b2','doc','c1','y2','flow']}
+];
+function cell(k){
+ if(M[k]) return `<div class="cell">${M[k]}</div>`;
+ const [c,en,cn,lat]=KW[k];
+ return `<div class="cell solid kw ${c}"><span class="en">${en}</span><span class="cn${lat?' lat':''}">${cn}</span></div>`;
+}
+const grid=document.getElementById('grid');
+grid.innerHTML=cols.map(c=>{const h=c.items.map(cell).join('');return `<div class="col ${c.cls}">${h}${h}</div>`}).join('');
 
-      // 专属动画 2：无敌彩虹闪烁
-      mario.classList.add('invincible');
-      setTimeout(() => mario.classList.remove('invincible'), 1500);
+/* ---------- 文章 ---------- */
+const arts=[
+ {kind:'Case study',bg:'var(--red)',fg:'#fff',t:'从 Sora 退场到可灵跑通：AI 视频商业化的生死局与产品反思',d:'技术决定了你能走多快，而商业闭环和场景适配才决定了你能走多远。',date:'2026.08',min:'约 9 分钟',tpl:'tpl-sora-kling'},
+ {kind:'Point of view',bg:'var(--ink)',fg:'#fff',t:'从“工具论”到“组织重构”：为什么你的企业用了 AI 依然没有成效？',d:'AI 落地不是买工具加培训，而是重做组织：对齐事实，闭环反馈，推动流程，设好检查点。',date:'2026.02',min:'约 12 分钟',tpl:'tpl-ai-org'},
+ {kind:'Reading notes',bg:'var(--blue)',fg:'var(--ink)',t:'认知的盲区与产品的方法论：《思考，快与慢》能给产品经理带来什么？',d:'此时此刻，用户的系统 1 正在想什么？从心智模式出发理解用户、看透决策。',date:'2025.01',min:'约 7 分钟',tpl:'tpl-thinking'},
+];
+const arrow='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
+const box=document.getElementById('arts');
+arts.forEach((a,i)=>{
+ const b=document.createElement('button');const ft=i===0;b.className='art'+(ft?' feat':'');b.type='button';b.id='art-'+i;
+ const inner=`<span class="kind" style="background:${a.bg};color:${a.fg}">${a.kind}</span><h3>${a.t}</h3><p>${a.d}</p>`;
+ b.innerHTML=(ft?`<span class="txt">${inner}</span>`:inner)+`<span class="foot"><span>${a.date} · ${a.min}</span><span class="circ">${arrow}</span></span>`;
+ b.addEventListener('click',()=>openArt(i));box.appendChild(b);
+});
+const reader=document.getElementById('reader');let lastY=0;
+function openArt(i){const a=arts[i];lastY=scrollY;
+ document.getElementById('r-title').textContent=a.t;
+ document.getElementById('r-meta').textContent=a.kind+' · '+a.date+' · '+a.min;
+ const rb=document.getElementById('r-body');const tp=a.tpl&&document.getElementById(a.tpl);
+ if(tp){rb.replaceChildren(tp.content.cloneNode(true));}else{rb.innerHTML=`<p>${a.d}</p><div class="ph">正文待撰写。文章写好后放在这里，排版保持一致。</div>`;}
+ reader.hidden=false;reader.scrollTop=0;document.body.style.overflow='hidden';document.getElementById('back').focus();}
+function closeArt(){reader.hidden=true;document.body.style.overflow='';scrollTo(0,lastY);}
+document.getElementById('back').addEventListener('click',closeArt);
+addEventListener('keydown',e=>{if(e.key==='Escape'&&!reader.hidden)closeArt();});
 
-      // 专属动画 3：星星粒子迸发
-      const sparkleChars = ['★', '✦', '·'];
-      const sparkleColors = ['#fff', '#ffcf3f', '#9fc2ff', '#ff9ad5'];
-      for (let i = 0; i < 12; i++) {
-        const sp = document.createElement('span');
-        sp.className = 'sparkle-particle';
-        sp.textContent = sparkleChars[Math.floor(Math.random() * sparkleChars.length)];
-        sp.style.left = (marioCenterPct() + (Math.random() * 10 - 5)) + '%';
-        sp.style.bottom = '70px';
-        sp.style.fontSize = (10 + Math.random() * 14) + 'px';
-        sp.style.color = sparkleColors[Math.floor(Math.random() * sparkleColors.length)];
-        sp.style.setProperty('--dx', (Math.random() * 40 - 20) + 'px');
-        stage.appendChild(sp);
-        setTimeout(() => sp.remove(), 800);
-      }
+/* ---------- 项目折叠 ---------- */
+const plus='<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 2v10M2 7h10"/></svg>';
+document.querySelectorAll('#projects .job').forEach((job,i)=>{
+ const st=job.querySelector('.stages');const top=job.querySelector('.job-top');if(!st||!top)return;
+ const fold=document.createElement('div');fold.className='fold';fold.id='fold-'+i;
+ const inner=document.createElement('div');st.parentNode.insertBefore(fold,st);inner.appendChild(st);fold.appendChild(inner);
+ const info=top.querySelector('div');if(info){const pk=document.createElement('p');pk.className='peek';pk.textContent='Discover · Define · Deliver';info.appendChild(pk);}
+ const btn=document.createElement('button');btn.type='button';btn.className='toggle';btn.id='toggle-'+i;
+ btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-controls',fold.id);
+ btn.innerHTML='<span class="t">展开详情</span><span class="pm">'+plus+'</span>';
+ top.appendChild(btn);
+ fold.inert=true;
+ const set=open=>{job.classList.toggle('open',open);btn.setAttribute('aria-expanded',open);btn.querySelector('.t').textContent=open?'收起':'展开详情';fold.inert=!open;};
+ top.addEventListener('click',()=>set(!job.classList.contains('open')));
+ job.querySelector('.when')?.addEventListener('click',()=>set(!job.classList.contains('open')));
+});
 
-      // 数秒后恢复原大小
-      setTimeout(() => { isBig = false; applyTransform(); }, 5000);
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') { e.preventDefault(); move(-1); }
-      else if (e.key === 'ArrowRight') { e.preventDefault(); move(1); }
-      else if (e.key === ' ' || e.key === 'ArrowUp') { e.preventDefault(); jump(); checkPickups(); }
-    });
-    mario.addEventListener('click', () => { jump(); checkPickups(); });
-    window.addEventListener('resize', placeMario);
-    placeMario();
-    applyTransform();
-
-    // ============ 复制邮箱 ============
-    const copyBtn = document.getElementById('copyMail');
-    if (copyBtn) {
-      copyBtn.addEventListener('click', () => {
-        const txt = '2878694370@qq.com';
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(txt).then(() => flashCopy());
-        } else {
-          const ta = document.createElement('textarea');
-          ta.value = txt; document.body.appendChild(ta);
-          ta.select(); document.execCommand('copy'); ta.remove();
-          flashCopy();
-        }
-      });
-    }
-    function flashCopy() {
-      if (!copyBtn) return;
-      copyBtn.textContent = '已复制 ✓';
-      setTimeout(() => { copyBtn.textContent = '复制邮箱'; }, 1600);
-    }
-
-    // ============ 作品封面：本地预览上传（临时，刷新后失效） ============
-    document.querySelectorAll('.proj-cover').forEach(cover => {
-      const input = cover.querySelector('.upload-btn input[type=file]');
-      if (!input) return;
-      input.addEventListener('change', () => {
-        const file = input.files && input.files[0];
-        if (!file) return;
-        if (!/^image\//.test(file.type)) {
-          alert('请选择图片文件哦～');
-          return;
-        }
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          cover.style.backgroundImage = 'url(' + e.target.result + ')';
-          cover.classList.add('has-img');
-          const hint = cover.querySelector('.upload-hint');
-          if (hint) hint.textContent = '封面已预览（刷新后需重新上传）';
-        };
-        reader.readAsDataURL(file);
-      });
-    });
-  </script>
+/* ---------- 复制邮箱 ---------- */
+const ok=document.getElementById('copyok');
+document.getElementById('copy').addEventListener('click',()=>{
+ const el=document.getElementById('mail');const t=el.textContent.trim();
+ const sel=()=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);ok.textContent='已选中，按 Ctrl/⌘ + C 复制';};
+ try{navigator.clipboard.writeText(t).then(()=>{ok.textContent='已复制';setTimeout(()=>ok.textContent='',2400)}).catch(sel)}catch(e){sel()}
+});
+</script>
 </body>
 </html>
